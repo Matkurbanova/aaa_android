@@ -9,8 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
+
+import kg.itrun.android.aaa.view.fragments.CategoryFragment;
+import kg.itrun.android.aaa.view.fragments.NewsFragment;
+import kg.itrun.android.aaa.view.fragments.ProductsFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,7 +52,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -56,15 +62,15 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.nav_categories:
                 toolbar.setTitle(R.string.categories);
-                System.out.println("Categories");
+                showFragment(CategoryFragment.class);
                 break;
             case R.id.nav_news:
                 toolbar.setTitle(R.string.menu_news);
-                System.out.println("NEWS");
+                showFragment(NewsFragment.class);
                 break;
             case R.id.nav_stocks:
                 toolbar.setTitle(R.string.menu_stocks);
-                System.out.println("STOCKS");
+                showFragment(ProductsFragment.class);
                 break;
             case R.id.nav_favorite:
                 toolbar.setTitle(R.string.menu_favorite);
@@ -86,5 +92,17 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void showFragment(Class fragmentClass) {
+        try {
+            Fragment fragment = (Fragment) fragmentClass.newInstance();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment);
+
+            transaction.commit();
+        } catch (IllegalAccessException | InstantiationException ex) {
+            ex.printStackTrace();
+        }
     }
 }
