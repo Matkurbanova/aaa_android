@@ -15,23 +15,23 @@
         <item
             android:id="@+id/nav_stocks"
             android:icon="@drawable/ic_stocks_24"
-            android:title="Акции" />
+            android:title="@string/menu_stocks" />
         <item
             android:id="@+id/nav_favorite"
             android:icon="@drawable/ic_favorite_border_black_24dp"
-            android:title="Любимые" />
+            android:title="@string/menu_favorite" />
         <item
             android:id="@+id/nav_personal_cabinet"
             android:icon="@drawable/ic_person_black_24dp"
-            android:title="Личный кабинет" />
+            android:title="@string/menu_personal_cabinet" />
         <item
             android:id="@+id/nav_purchase_history"
             android:icon="@drawable/ic_shopping_cart_black_24dp"
-            android:title="История покупок" />
+            android:title="@string/menu_purchase_history" />
         <item
-            android:id="@+id/nav_purchase_chat"
+            android:id="@+id/nav_chat"
             android:icon="@drawable/ic_chat_black_24dp"
-            android:title="Чат" />
+            android:title="@string/menu_chat" />
 
     </group>
 

@@ -62,6 +62,26 @@ public class MainActivity extends AppCompatActivity
                 toolbar.setTitle(R.string.menu_news);
                 System.out.println("NEWS");
                 break;
+            case R.id.nav_stocks:
+                toolbar.setTitle(R.string.menu_stocks);
+                System.out.println("STOCKS");
+                break;
+            case R.id.nav_favorite:
+                toolbar.setTitle(R.string.menu_favorite);
+                System.out.println("FAVORITE");
+                break;
+            case R.id.nav_personal_cabinet:
+                toolbar.setTitle(R.string.menu_personal_cabinet);
+                System.out.println("PERSONAL CABINET");
+                break;
+            case R.id.nav_purchase_history:
+                toolbar.setTitle(R.string.menu_purchase_history);
+                System.out.println("PURCHASE HISTORY");
+                break;
+            case R.id.nav_chat:
+                toolbar.setTitle(R.string.menu_chat);
+                System.out.println("CHAT");
+                break;
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

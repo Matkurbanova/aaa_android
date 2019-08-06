@@ -16,4 +16,9 @@
     <string name="menu_send">Send</string>
     <string name="categories">Категории</string>
     <string name="menu_news">Новости</string>
+    <string name="menu_stocks">Акции</string>
+    <string name="menu_favorite">Любимые</string>
+    <string name="menu_personal_cabinet">Личный кабинет</string>
+    <string name="menu_purchase_history">История покупок</string>
+    <string name="menu_chat">Чат</string>
 </resources>
