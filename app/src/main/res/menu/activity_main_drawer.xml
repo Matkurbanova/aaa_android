@@ -12,6 +12,27 @@
             android:id="@+id/nav_news"
             android:icon="@drawable/ic_fiber_new_black_24dp"
             android:title="@string/menu_news" />
+        <item
+            android:id="@+id/nav_stocks"
+            android:icon="@drawable/ic_stocks_24"
+            android:title="Акции" />
+        <item
+            android:id="@+id/nav_favorite"
+            android:icon="@drawable/ic_favorite_border_black_24dp"
+            android:title="Любимые" />
+        <item
+            android:id="@+id/nav_personal_cabinet"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="Личный кабинет" />
+        <item
+            android:id="@+id/nav_purchase_history"
+            android:icon="@drawable/ic_shopping_cart_black_24dp"
+            android:title="История покупок" />
+        <item
+            android:id="@+id/nav_purchase_chat"
+            android:icon="@drawable/ic_chat_black_24dp"
+            android:title="Чат" />
+
     </group>
 
     <item android:title="Communicate">
