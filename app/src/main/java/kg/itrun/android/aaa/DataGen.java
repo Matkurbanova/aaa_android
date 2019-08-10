@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import kg.itrun.android.aaa.data.Category;
+import kg.itrun.android.aaa.data.Product;
 import kg.itrun.android.aaa.data.SubCategory;
 
 public class DataGen {
@@ -18,6 +19,17 @@ public class DataGen {
             "Хоз товары",
             "Красота и здоровье",
             "Канцтовары"
+    };
+
+    public static String[] productNames = new String[]{
+            "Банан",
+            "Молоко",
+            "Сыр",
+            "Хлеб",
+            "Сгущенное молоко",
+            "Творог",
+            "Шампунь",
+            "Ручка"
     };
 
     public static String[] subCatNames = new String[]{
@@ -56,5 +68,16 @@ public class DataGen {
         }
 
         return categories;
+    }
+
+    public static List<Product> genProducts(int count) {
+        List<Product> products = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < count; i++) {
+            Product product = new Product(productNames[random.nextInt(productNames.length)]);
+            products.add(product);
+        }
+
+        return products;
     }
 }
