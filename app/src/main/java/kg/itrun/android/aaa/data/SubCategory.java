@@ -1,19 +1,11 @@
 package kg.itrun.android.aaa.data;
 
-import android.view.View;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import kg.itrun.android.aaa.R;
-
-public class Category extends AppCompatActivity implements View.OnClickListener {
-
-    public Category() {
+public class SubCategory {
+    public SubCategory() {
 
     }
 
-    public Category(String name) {
+    public SubCategory(String name) {
         this.name = name;
     }
 
@@ -37,10 +29,4 @@ public class Category extends AppCompatActivity implements View.OnClickListener 
         this.name = name;
     }
 
-    @Override
-    public void onClick(View view) {
-
-            switch (view.getId()){
-
-            }}
 }

@@ -18,6 +18,7 @@ import com.google.android.material.navigation.NavigationView;
 import kg.itrun.android.aaa.view.fragments.CategoryFragment;
 import kg.itrun.android.aaa.view.fragments.NewsFragment;
 import kg.itrun.android.aaa.view.fragments.ProductsFragment;
+import kg.itrun.android.aaa.view.fragments.SubCategoryFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_favorite:
                 toolbar.setTitle(R.string.menu_favorite);
-                System.out.println("FAVORITE");
+                showFragment(SubCategoryFragment.class);
                 break;
             case R.id.nav_personal_cabinet:
                 toolbar.setTitle(R.string.menu_personal_cabinet);
