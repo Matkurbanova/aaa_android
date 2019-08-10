@@ -22,6 +22,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
 
     private LayoutInflater inflater;
 
+    private CategoryListener listener;
+
     public CategoriesAdapter(Context context) {
         inflater = LayoutInflater.from(context);
     }
@@ -30,6 +32,10 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
         categoriesList.clear();
         categoriesList.addAll(categories);
         notifyDataSetChanged();
+    }
+
+    public void setListener(CategoryListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -41,8 +47,16 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
 
     @Override
     public void onBindViewHolder(@NonNull CategoryVH holder, int position) {
-        Category category = categoriesList.get(position);
+        final Category category = categoriesList.get(position);
         holder.textViewName.setText(category.getName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onCategoryClick(category);
+                System.out.println(category.getName());
+            }
+        });
     }
 
     @Override

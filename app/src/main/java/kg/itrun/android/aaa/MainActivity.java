@@ -15,15 +15,21 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
+import kg.itrun.android.aaa.data.Category;
+import kg.itrun.android.aaa.data.SubCategory;
 import kg.itrun.android.aaa.view.fragments.CategoryFragment;
+import kg.itrun.android.aaa.view.fragments.CategoryFragmentListener;
 import kg.itrun.android.aaa.view.fragments.NewsFragment;
 import kg.itrun.android.aaa.view.fragments.ProductsFragment;
 import kg.itrun.android.aaa.view.fragments.SubCategoryFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        CategoryFragmentListener,
+        SubCategoryFragment.SubCategoryFragmentListener {
 
     private Toolbar toolbar;
+    private Fragment currentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +101,20 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    private void showFragment(Class fragmentClass, String tag) {
+        try {
+            Fragment fragment = (Fragment) fragmentClass.newInstance();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment);
+            transaction.addToBackStack(tag);
+            transaction.commit();
+
+            currentFragment = fragment;
+        } catch (IllegalAccessException | InstantiationException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     private void showFragment(Class fragmentClass) {
         try {
             Fragment fragment = (Fragment) fragmentClass.newInstance();
@@ -102,8 +122,28 @@ public class MainActivity extends AppCompatActivity
             FragmentTransaction transaction = fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment);
 
             transaction.commit();
+
+            currentFragment = fragment;
         } catch (IllegalAccessException | InstantiationException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @Override
+    public void onCategoryClick(Category category) {
+        toolbar.setTitle(category.getName());
+        if (currentFragment != null)
+            showFragment(SubCategoryFragment.class, currentFragment.getTag());
+        else
+            showFragment(SubCategoryFragment.class);
+    }
+
+    @Override
+    public void onSubCategorySelect(SubCategory subCategory) {
+        toolbar.setTitle(subCategory.getName());
+        if (currentFragment != null)
+            showFragment(ProductsFragment.class, currentFragment.getTag());
+        else
+            showFragment(ProductsFragment.class);
     }
 }

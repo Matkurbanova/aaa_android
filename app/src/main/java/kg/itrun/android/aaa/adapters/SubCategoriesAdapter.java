@@ -21,6 +21,7 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
     private List<SubCategory> subcategoriesList = new ArrayList<>();
 
     private LayoutInflater inflater;
+    private SubCatListener subCatListener;
 
     public SubCategoriesAdapter(Context context) {
         inflater = LayoutInflater.from(context);
@@ -30,6 +31,10 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
         subcategoriesList.clear();
         subcategoriesList.addAll(subcategories);
         notifyDataSetChanged();
+    }
+
+    public void setSubCatListener(SubCatListener subCatListener) {
+        this.subCatListener = subCatListener;
     }
 
     @NonNull
@@ -42,8 +47,14 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
 
     @Override
     public void onBindViewHolder(@NonNull SubCategoryVH holder, int position) {
-        SubCategory subcategory = subcategoriesList.get(position);
+        final SubCategory subcategory = subcategoriesList.get(position);
         holder.textViewName.setText(subcategory.getName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                subCatListener.onSubCategoryClick(subcategory);
+            }
+        });
     }
 
     @Override
@@ -51,13 +62,18 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
         return subcategoriesList.size();
     }
 
-    public class SubCategoryVH extends RecyclerView.ViewHolder{
+    public class SubCategoryVH extends RecyclerView.ViewHolder {
         private TextView textViewName;
         private ImageView imageViewIcon;
+
         public SubCategoryVH(@NonNull View itemView) {
             super(itemView);
             textViewName = itemView.findViewById(R.id.textViewName);
             imageViewIcon = itemView.findViewById(R.id.imageViewIcon);
         }
+    }
+
+    public interface SubCatListener {
+        void onSubCategoryClick(SubCategory subCategory);
     }
 }
