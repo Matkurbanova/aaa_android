@@ -28,8 +28,10 @@
         android:layout_height="22dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_heart_outline_grey"
+        android:src="@drawable/heart_50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewNews" />
 
@@ -38,6 +40,8 @@
         android:layout_width="22dp"
         android:layout_height="21dp"
         android:layout_marginStart="8dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
         android:background="@android:color/transparent"
         android:src="@drawable/share_24"
         app:layout_constraintStart_toEndOf="@+id/btnLike"

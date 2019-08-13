@@ -51,7 +51,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
         holder.textSwitcher.setText("" + news.getLikes());
 
         if (news.isLiked()){
-            holder.btnLike.setImageDrawable(context.getDrawable(R.drawable.heart_30));
+            holder.btnLike.setImageDrawable(context.getDrawable(R.drawable.heart_50));
         }
 
     }

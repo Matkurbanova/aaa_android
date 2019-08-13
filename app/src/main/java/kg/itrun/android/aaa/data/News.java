@@ -9,13 +9,12 @@ public class News {
         this.text = text;
     }
 
-    private boolean isLiked;
-
     private String image;
     private String text;
     private String icon;
     private String links;
     private int likes;
+    private boolean isLiked;
 
     public boolean isLiked() {
         return isLiked;
