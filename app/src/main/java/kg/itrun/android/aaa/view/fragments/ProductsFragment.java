@@ -9,12 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
-import kg.itrun.android.aaa.adapters.CategoriesAdapter;
 import kg.itrun.android.aaa.adapters.ProductsAdapter;
 
 public class ProductsFragment extends Fragment {

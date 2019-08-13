@@ -15,7 +15,7 @@
         app:srcCompat="@drawable/ic_child_friendly_black_24dp" />
 
     <TextView
-        android:id="@+id/textViewName"
+        android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

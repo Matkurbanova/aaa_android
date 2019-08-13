@@ -68,7 +68,7 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
 
         public SubCategoryVH(@NonNull View itemView) {
             super(itemView);
-            textViewName = itemView.findViewById(R.id.textViewName);
+            textViewName = itemView.findViewById(R.id.textViewTitle);
             imageViewIcon = itemView.findViewById(R.id.imageViewIcon);
         }
     }
