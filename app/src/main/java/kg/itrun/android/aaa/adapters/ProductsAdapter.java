@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kg.itrun.android.aaa.R;
-import kg.itrun.android.aaa.data.Category;
 import kg.itrun.android.aaa.data.Product;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductsVH> {

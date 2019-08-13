@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import kg.itrun.android.aaa.data.Category;
+import kg.itrun.android.aaa.data.News;
 import kg.itrun.android.aaa.data.Product;
 import kg.itrun.android.aaa.data.SubCategory;
 
@@ -47,6 +48,11 @@ public class DataGen {
             "Мясные и колбасные изделия",
             "Корм для домашних животных"
     };
+    public static String[] newsTexts = new String[]{
+            "Кто устал и хочет в отпуск? Выигрывайте ПОДАРКИ от KITKAT Senses в акции... еще",
+            "Сок рекомендуется пить утром за завтраком. Если же дело совсем плохо...еще",
+
+    };
 
     public static List<Category> genCategories(int count) {
         List<Category> categories = new ArrayList<>();
@@ -79,5 +85,17 @@ public class DataGen {
         }
 
         return products;
+    }
+    public static List<News> genNews(int count) {
+        List<News> news = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < count; i++) {
+            News new1 = new News(newsTexts[random.nextInt(newsTexts.length)]);
+            new1.setLikes(random.nextInt(10000));
+            new1.setLiked(random.nextBoolean());
+            news.add(new1);
+        }
+
+        return news;
     }
 }
