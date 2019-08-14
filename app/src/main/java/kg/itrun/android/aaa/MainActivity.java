@@ -17,6 +17,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import kg.itrun.android.aaa.data.Category;
 import kg.itrun.android.aaa.data.SubCategory;
+import kg.itrun.android.aaa.view.fragments.BasketFragment;
 import kg.itrun.android.aaa.view.fragments.CategoryFragment;
 import kg.itrun.android.aaa.view.fragments.CategoryFragmentListener;
 import kg.itrun.android.aaa.view.fragments.NewsFragment;
@@ -96,7 +97,10 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_chat:
                 toolbar.setTitle(R.string.menu_chat);
                 System.out.println("CHAT");
+
+                showFragment(BasketFragment.class);
                 break;
+
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

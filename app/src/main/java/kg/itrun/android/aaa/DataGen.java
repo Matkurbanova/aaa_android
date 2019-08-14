@@ -81,6 +81,9 @@ public class DataGen {
         Random random = new Random();
         for (int i = 0; i < count; i++) {
             Product product = new Product(productNames[random.nextInt(productNames.length)]);
+            product.setDescription(newsTexts[random.nextInt(newsTexts.length)]);
+            product.setCount(random.nextInt(10));
+            product.setPrice(random.nextInt(10000));
             products.add(product);
         }
 
