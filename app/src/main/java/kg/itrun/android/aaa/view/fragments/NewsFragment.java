@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.adapters.NewsAdapter;
-import kg.itrun.android.aaa.adapters.ProductsAdapter;
-import kg.itrun.android.aaa.adapters.SubCategoriesAdapter;
 
 public class NewsFragment extends Fragment {
 

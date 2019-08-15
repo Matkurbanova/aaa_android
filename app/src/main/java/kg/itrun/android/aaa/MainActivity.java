@@ -23,6 +23,7 @@ import kg.itrun.android.aaa.view.fragments.CategoryFragmentListener;
 import kg.itrun.android.aaa.view.fragments.NewsFragment;
 import kg.itrun.android.aaa.view.fragments.ProductFragment;
 import kg.itrun.android.aaa.view.fragments.ProductsFragment;
+import kg.itrun.android.aaa.view.fragments.PromoFragment;
 import kg.itrun.android.aaa.view.fragments.SubCategoryFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_stocks:
                 toolbar.setTitle(R.string.menu_stocks);
-                showFragment(ProductsFragment.class);
+                showFragment(PromoFragment.class);
                 break;
             case R.id.nav_favorite:
                 toolbar.setTitle(R.string.menu_favorite);

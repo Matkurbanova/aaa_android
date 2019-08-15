@@ -7,6 +7,7 @@ import java.util.Random;
 import kg.itrun.android.aaa.data.Category;
 import kg.itrun.android.aaa.data.News;
 import kg.itrun.android.aaa.data.Product;
+import kg.itrun.android.aaa.data.Promo;
 import kg.itrun.android.aaa.data.SubCategory;
 
 public class DataGen {
@@ -54,6 +55,14 @@ public class DataGen {
 
     };
 
+    public static Double prices[] = new Double[]
+            {
+                    new Double(32.5),
+                    new Double(723.23),
+                    new Double(33.23),
+                    new Double(623.23),
+            };
+
     public static List<Category> genCategories(int count) {
         List<Category> categories = new ArrayList<>();
         Random random = new Random();
@@ -89,6 +98,7 @@ public class DataGen {
 
         return products;
     }
+
     public static List<News> genNews(int count) {
         List<News> news = new ArrayList<>();
         Random random = new Random();
@@ -100,5 +110,20 @@ public class DataGen {
         }
 
         return news;
+    }
+
+    public static List<Promo> genPromo(int count) {
+        List<Promo> promos = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < count; i++) {
+            Promo promo = new Promo(newsTexts[random.nextInt(newsTexts.length)]);
+            promo.setOldPrice(prices[random.nextInt(prices.length)]);
+            promo.setNewPrice(prices[random.nextInt(prices.length)]);
+            promo.setName(productNames[random.nextInt(productNames.length)]);
+            promo.setProductInfo(newsTexts[random.nextInt(newsTexts.length)]);
+            promos.add(promo);
+        }
+
+        return promos;
     }
 }
