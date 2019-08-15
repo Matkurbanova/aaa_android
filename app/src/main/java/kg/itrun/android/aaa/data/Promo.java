@@ -1,10 +1,6 @@
 package kg.itrun.android.aaa.data;
 
-import android.view.View;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-public class Promo extends AppCompatActivity implements View.OnClickListener  {
+public class Promo {
 
     public Promo() {
     }
@@ -47,14 +43,7 @@ public class Promo extends AppCompatActivity implements View.OnClickListener  {
     }
 
 
-
     public void setProductInfo(String icon) {
         this.productInfo = icon;
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-        }
     }
 }

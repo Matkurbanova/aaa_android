@@ -15,6 +15,7 @@ import java.util.List;
 
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.data.Product;
+import kg.itrun.android.aaa.data.Repository;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductsVH> {
 
@@ -22,13 +23,19 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
     private LayoutInflater inflater;
 
+    private ProductAdapterListener listener;
+
     public ProductsAdapter(Context context) {
         inflater = LayoutInflater.from(context);
     }
 
+    public void setListener(ProductAdapterListener listener) {
+        this.listener = listener;
+    }
+
     public void setCategoriesList(List<Product> products) {
         productsList.clear();
-        productsList.addAll(products );
+        productsList.addAll(products);
         notifyDataSetChanged();
     }
 
@@ -41,8 +48,16 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
     @Override
     public void onBindViewHolder(@NonNull ProductsVH holder, int position) {
-        Product products = productsList.get(position);
+        final Product products = productsList.get(position);
         holder.textViewName.setText(products.getName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onProductClick(products);
+                }
+            }
+        });
     }
 
     @Override
@@ -59,8 +74,12 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         public ProductsVH(@NonNull View itemView) {
             super(itemView);
             textViewName = itemView.findViewById(R.id.textViewTitle);
-            textViewPrice = itemView.findViewById(R.id.textViewSom);
+            textViewPrice = itemView.findViewById(R.id.textViewPrice);
             imageViewProduct = itemView.findViewById(R.id.imageViewProduct);
         }
+    }
+
+    public interface ProductAdapterListener {
+        void onProductClick(Product product);
     }
 }

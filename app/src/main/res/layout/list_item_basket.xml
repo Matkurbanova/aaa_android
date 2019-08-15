@@ -100,11 +100,11 @@
         android:layout_marginBottom="8dp"
         android:text="999"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textViewSom"
+        app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
         app:layout_constraintTop_toTopOf="@+id/imageViewPlus" />
 
     <TextView
-        android:id="@+id/textViewSom"
+        android:id="@+id/textViewPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
