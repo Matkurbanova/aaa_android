@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment;
 import kg.itrun.android.aaa.R;
 
 public class ProductFragment extends Fragment {
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

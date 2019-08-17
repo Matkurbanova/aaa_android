@@ -1,9 +1,6 @@
 package kg.itrun.android.aaa;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,13 +16,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
-import java.io.File;
-
 import kg.itrun.android.aaa.data.Category;
+import kg.itrun.android.aaa.data.Product;
 import kg.itrun.android.aaa.data.SubCategory;
 import kg.itrun.android.aaa.view.fragments.BasketFragment;
 import kg.itrun.android.aaa.view.fragments.CategoryFragment;
-import kg.itrun.android.aaa.view.fragments.CategoryFragmentListener;
 import kg.itrun.android.aaa.view.fragments.FavoriteFragment;
 import kg.itrun.android.aaa.view.fragments.NewsFragment;
 import kg.itrun.android.aaa.view.fragments.ProductFragment;
@@ -34,9 +29,12 @@ import kg.itrun.android.aaa.view.fragments.PromoFragment;
 import kg.itrun.android.aaa.view.fragments.SubCategoryFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,
-        CategoryFragmentListener,
-        SubCategoryFragment.SubCategoryFragmentListener, View.OnClickListener {
+        implements
+        NavigationView.OnNavigationItemSelectedListener,
+        SubCategoryFragment.SubCategoryFragmentListener,
+        View.OnClickListener,
+        CategoryFragment.CategoryFragmentListener,
+        ProductsFragment.ProductsFragmentListener {
 
     private Toolbar toolbar;
     private Fragment currentFragment;
@@ -134,17 +132,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void showFragment(Class fragmentClass) {
-        try {
-            Fragment fragment = (Fragment) fragmentClass.newInstance();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment);
-
-            transaction.commit();
-
-            currentFragment = fragment;
-        } catch (IllegalAccessException | InstantiationException ex) {
-            ex.printStackTrace();
-        }
+        showFragment(fragmentClass, null);
     }
 
     @Override
@@ -167,63 +155,11 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClick(View view) {
-        View.OnClickListener handler = new View.OnClickListener() {
-            public void onClick(View v) {
-                switch (v.getId()) {
-
-                    case R.id.btnShare:
-                        shareTextUrl();
-                        break;
-
-                    case R.id.btnShareNews:
-                        shareNews();
-                        break;
-                }
-            }
-        };
-
-        // our buttons
-
-        findViewById(R.id.btnShare).setOnClickListener(handler);
-        findViewById(R.id.btnShareNews).setOnClickListener(handler);
-
 
     }
 
-    // Method to share either text or URL.
-    private void shareTextUrl() {
-        Intent share = new Intent(android.content.Intent.ACTION_SEND);
-        share.setType("text/plain");
-        share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-        // Add data to the intent, the receiving app will decide
-        // what to do with it.
-        share.putExtra(Intent.EXTRA_SUBJECT, "Title Of The Post");
-        share.putExtra(Intent.EXTRA_TEXT, "http://www.codeofaninja.com");
-
-        startActivity(Intent.createChooser(share, "Share link!"));
+    @Override
+    public void onProductSelect(Product product) {
+        showFragment(ProductFragment.class, currentFragment.getTag());
     }
-
-
-    // Method to share any image.
-    private void shareNews() {
-        Intent share = new Intent(Intent.ACTION_SEND);
-
-        // If you want to share a png image only, you can do:
-        // setType("image/png"); OR for jpeg: setType("image/jpeg");
-        share.setType("image/*");
-
-        // Make sure you put example png image named myImage.png in your
-        // directory
-        String imagePath = Environment.getExternalStorageDirectory()
-                + "/myImage.png";
-
-        File imageFileToShare = new File(imagePath);
-
-        Uri uri = Uri.fromFile(imageFileToShare);
-        share.putExtra(Intent.EXTRA_STREAM, uri);
-
-        startActivity(Intent.createChooser(share, "Share Image!"));
-
-}
 }
