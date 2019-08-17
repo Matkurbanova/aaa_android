@@ -46,7 +46,6 @@ public class BasketFragment extends Fragment {
     };
 
     public BasketFragment() {
-        // Required empty public constructor
     }
 
 
