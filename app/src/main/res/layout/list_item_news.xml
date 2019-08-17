@@ -45,7 +45,24 @@
         android:background="@android:color/transparent"
         android:src="@drawable/share_24"
         app:layout_constraintStart_toEndOf="@+id/btnLike"
-        app:layout_constraintTop_toTopOf="@+id/btnLike" />
+        app:layout_constraintTop_toTopOf="@+id/btnLike"
+        android:text="Share Text or URL" />
+    <ImageView
+        android:id="@+id/btnShareNews"
+        android:layout_width="22dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="8dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        android:src="@drawable/share_24"
+        app:layout_constraintStart_toEndOf="@+id/btnLike"
+        app:layout_constraintTop_toTopOf="@+id/btnLike"
+        android:text="Share News" />
+
+
+
+
 
     <LinearLayout
         android:id="@+id/linearLayout"

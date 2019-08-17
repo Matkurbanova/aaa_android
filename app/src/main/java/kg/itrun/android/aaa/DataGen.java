@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import kg.itrun.android.aaa.data.Category;
+import kg.itrun.android.aaa.data.Favorite;
 import kg.itrun.android.aaa.data.News;
 import kg.itrun.android.aaa.data.Product;
 import kg.itrun.android.aaa.data.Promo;
@@ -52,6 +53,17 @@ public class DataGen {
     public static String[] newsTexts = new String[]{
             "Кто устал и хочет в отпуск? Выигрывайте ПОДАРКИ от KITKAT Senses в акции... еще",
             "Сок рекомендуется пить утром за завтраком. Если же дело совсем плохо...еще",
+
+    };
+    public static String[] subFavoriteNames = new String[]{
+            "Чай Lipton",
+            "Рыба",
+            "Шоколад",
+            "Творог",
+            "Сыр ",
+            "Сок",
+            "Ручка",
+            "Холодильник",
 
     };
 
@@ -125,5 +137,18 @@ public class DataGen {
         }
 
         return promos;
+    }
+    public static List<Favorite> genFavorite(int count) {
+        List<Favorite> favorites = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < count; i++) {
+            Favorite favorite = new Favorite(newsTexts[random.nextInt(newsTexts.length)]);
+            favorite.setPrice(prices[random.nextInt(prices.length)]);
+            favorite.setText(productNames[random.nextInt(productNames.length)]);
+
+            favorites.add(favorite);
+        }
+
+        return favorites;
     }
 }
