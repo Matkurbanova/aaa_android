@@ -118,6 +118,7 @@ public class DataGen {
             News new1 = new News(newsTexts[random.nextInt(newsTexts.length)]);
             new1.setLikes(random.nextInt(10000));
             new1.setLiked(random.nextBoolean());
+            new1.setLinks("http://google.com");
             news.add(new1);
         }
 
@@ -138,6 +139,7 @@ public class DataGen {
 
         return promos;
     }
+
     public static List<Favorite> genFavorite(int count) {
         List<Favorite> favorites = new ArrayList<>();
         Random random = new Random();

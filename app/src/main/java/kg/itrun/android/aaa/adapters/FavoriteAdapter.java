@@ -48,12 +48,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         holder.textViewSubName.setText(favorite.getText());
         holder.textViewProductName.setText(favorite.getText());
         holder.textViewPrice.setText("" + favorite.getPrice());
-
-
     }
-
-
-
 
     @Override
     public int getItemCount() {

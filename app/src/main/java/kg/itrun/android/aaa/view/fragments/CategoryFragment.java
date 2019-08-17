@@ -15,10 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.adapters.CategoriesAdapter;
-import kg.itrun.android.aaa.adapters.CategoryListener;
 import kg.itrun.android.aaa.data.Category;
 
-public class CategoryFragment extends Fragment implements CategoryListener {
+public class CategoryFragment extends Fragment
+        implements CategoriesAdapter.CategoryListener {
 
     private RecyclerView recyclerViewCategories;
     private CategoriesAdapter categoriesAdapter;
@@ -53,5 +53,9 @@ public class CategoryFragment extends Fragment implements CategoryListener {
     public void onCategoryClick(Category category) {
         if (listener != null)
             listener.onCategoryClick(category);
+    }
+
+    public interface CategoryFragmentListener extends CategoriesAdapter.CategoryListener {
+
     }
 }

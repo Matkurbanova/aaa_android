@@ -75,4 +75,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
             imageViewIcon = itemView.findViewById(R.id.imageViewIcon);
         }
     }
+
+    public interface CategoryListener {
+        void onCategoryClick(Category category);
+    }
 }
