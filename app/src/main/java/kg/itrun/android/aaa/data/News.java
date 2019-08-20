@@ -36,7 +36,6 @@ public class News {
     }
     public void setLinks(String links){
         this.links=links;
-
     }
 
     public String getImage() {

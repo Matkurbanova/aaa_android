@@ -1,5 +1,6 @@
 package kg.itrun.android.aaa.view.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,19 +17,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.adapters.ProductsAdapter;
 import kg.itrun.android.aaa.data.Product;
 import kg.itrun.android.aaa.view.models.BasketViewModel;
 import kg.itrun.android.aaa.view.models.ProductsViewModel;
 
-public class ProductsFragment extends Fragment implements ProductsAdapter.ProductAdapterListener {
+public class ProductsFragment extends Fragment
+        implements ProductsAdapter.ProductAdapterListener {
 
     private RecyclerView recyclerViewProducts;
     private ProductsAdapter productsAdapter;
     private ProductsViewModel productsViewModel;
     private BasketViewModel basketViewModel;
+
+    private ProductsFragmentListener listener;
 
     private Observer<List<Product>> observer = new Observer<List<Product>>() {
         @Override
@@ -36,6 +39,13 @@ public class ProductsFragment extends Fragment implements ProductsAdapter.Produc
             productsAdapter.setCategoriesList(products);
         }
     };
+
+    @Override
+    public void onAttach(Context context) {
+        if (context instanceof ProductsFragmentListener)
+            listener = (ProductsFragmentListener) context;
+        super.onAttach(context);
+    }
 
     @Nullable
     @Override
@@ -61,7 +71,10 @@ public class ProductsFragment extends Fragment implements ProductsAdapter.Produc
 
     @Override
     public void onProductClick(Product product) {
-        basketViewModel.addProduct(product);
-        System.out.println("ADD TO BASKET: " + product.getName());
+        listener.onProductSelect(product);
+    }
+
+    public interface ProductsFragmentListener {
+        void onProductSelect(Product product);
     }
 }
