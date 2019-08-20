@@ -63,8 +63,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewCount"
-        app:layout_constraintTop_toTopOf="@+id/textViewCount"
+        app:layout_constraintStart_toEndOf="@+id/textViewCountText"
+        app:layout_constraintTop_toTopOf="@+id/textViewCountText"
         app:srcCompat="@drawable/ic_add_black_24dp" />
 
     <ImageView
@@ -76,11 +76,11 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewMain"
-        app:layout_constraintTop_toTopOf="@+id/textViewCount"
+        app:layout_constraintTop_toTopOf="@+id/textViewCountText"
         app:srcCompat="@drawable/ic_remove_black_24dp" />
 
     <EditText
-        android:id="@+id/textViewCount"
+        android:id="@+id/textViewCountText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
