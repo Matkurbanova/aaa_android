@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        showFragment(ProductsFragment.class);
     }
 
     @Override
@@ -117,9 +118,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void showFragment(Class fragmentClass, String tag) {
+
+    private void showFragment(Class fragmentClass, String tag, Bundle bundle) {
         try {
             Fragment fragment = (Fragment) fragmentClass.newInstance();
+            fragment.setArguments(bundle);
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment);
             transaction.addToBackStack(tag);
@@ -129,6 +132,10 @@ public class MainActivity extends AppCompatActivity
         } catch (IllegalAccessException | InstantiationException ex) {
             ex.printStackTrace();
         }
+    }
+
+    private void showFragment(Class fragmentClass, String tag) {
+        showFragment(fragmentClass, tag, null);
     }
 
     private void showFragment(Class fragmentClass) {
@@ -155,11 +162,20 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()) {
+            case R.id.fabShoppingCart:
+                if (currentFragment != null)
+                    showFragment(BasketFragment.class, currentFragment.getTag());
+                else
+                    showFragment(BasketFragment.class);
+                break;
+        }
     }
 
     @Override
     public void onProductSelect(Product product) {
-        showFragment(ProductFragment.class, currentFragment.getTag());
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(AppStatics.PRODUCT, product);
+        showFragment(ProductFragment.class, currentFragment.getTag(), bundle);
     }
 }
