@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,6 +34,8 @@ public class FavoriteFragment extends Fragment {
         favoriteAdapter = new FavoriteAdapter(getContext());
 
         recyclerViewFavorite.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewFavorite.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
         recyclerViewFavorite.setAdapter(favoriteAdapter);
         favoriteAdapter.setFavoriteList(DataGen.genFavorite(35));
     }
