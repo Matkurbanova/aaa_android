@@ -29,9 +29,10 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         inflater = LayoutInflater.from(context);
         this.context = context;
     }
+
     public void setFavoriteList(List<Favorite> favorite) {
         favoriteList.clear();
-        favoriteList.addAll(favorite );
+        favoriteList.addAll(favorite);
         notifyDataSetChanged();
     }
 
@@ -46,9 +47,15 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     @Override
     public void onBindViewHolder(@NonNull FavoriteAdapter.FavoriteVH holder, final int position) {
         final Favorite favorite = favoriteList.get(position);
-        holder.textViewSubName.setText(favorite.getText());
-        holder.textViewProductName.setText(favorite.getText());
+        holder.textViewSubName.setText(favorite.getName());
+        holder.textViewProductName.setText(favorite.getDescription());
         holder.textViewPrice.setText("" + favorite.getPrice());
+        holder.imageViewBasket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onFavoriteClick(favorite);
+            }
+        });
     }
 
     @Override
@@ -56,9 +63,12 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         return favoriteList.size();
     }
 
+    public void setListener(FavoriteAdapterListener listener) {
+        this.listener = listener;
+    }
+
     public interface FavoriteAdapterListener {
         void onFavoriteClick(Favorite favorite);
-   // test2
     }
 
     public class FavoriteVH extends RecyclerView.ViewHolder {
@@ -67,6 +77,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         private ImageView imageViewFavorite;
         private TextView textViewPrice;
         private ImageView imageViewDelete;
+        private ImageView imageViewBasket;
 
 
         public FavoriteVH(@NonNull View itemView) {
@@ -77,7 +88,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
             imageViewFavorite = itemView.findViewById(R.id.imageViewFavorite);
             textViewPrice = itemView.findViewById(R.id.textViewPrice);
             imageViewDelete = itemView.findViewById(R.id.imageViewDelete);
-
+            imageViewBasket = itemView.findViewById(R.id.imageViewBasket);
         }
     }
 }

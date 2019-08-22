@@ -133,7 +133,8 @@ public class DataGen {
             promo.setOldPrice(prices[random.nextInt(prices.length)]);
             promo.setNewPrice(prices[random.nextInt(prices.length)]);
             promo.setName(productNames[random.nextInt(productNames.length)]);
-            promo.setProductInfo(newsTexts[random.nextInt(newsTexts.length)]);
+            promo.setCount(1);
+            promo.setPromoDescription(newsTexts[random.nextInt(newsTexts.length)]);
             promos.add(promo);
         }
 
@@ -146,7 +147,7 @@ public class DataGen {
         for (int i = 0; i < count; i++) {
             Favorite favorite = new Favorite(newsTexts[random.nextInt(newsTexts.length)]);
             favorite.setPrice(prices[random.nextInt(prices.length)]);
-            favorite.setText(productNames[random.nextInt(productNames.length)]);
+            favorite.setName(productNames[random.nextInt(productNames.length)]);
 
             favorites.add(favorite);
         }
