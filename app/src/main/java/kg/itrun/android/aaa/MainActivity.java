@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_personal_cabinet:
                 toolbar.setTitle(R.string.menu_personal_cabinet);
                 System.out.println("PERSONAL CABINET");
-                showFragment(ProductFragment.class);
+                showFragment(Fragment.class);
                 break;
             case R.id.nav_purchase_history:
                 toolbar.setTitle(R.string.menu_purchase_history);

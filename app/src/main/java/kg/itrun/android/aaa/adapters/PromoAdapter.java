@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextSwitcher;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kg.itrun.android.aaa.R;
-import kg.itrun.android.aaa.data.Product;
+import kg.itrun.android.aaa.data.News;
 import kg.itrun.android.aaa.data.Promo;
 
 public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.PromoVH> {

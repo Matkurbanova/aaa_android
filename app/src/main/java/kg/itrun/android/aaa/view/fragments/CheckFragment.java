@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import kg.itrun.android.aaa.R;
 
-public class ChekFragment extends Fragment {
-    private ChekFragment chekFragment;
+public class CheckFragment extends Fragment {
+    private CheckFragment chekFragment;
     private RecyclerView recyclerView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.chek_fragment, container, false);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.check_fragment, container, false);
         initViews(view);
         return view;
     }
