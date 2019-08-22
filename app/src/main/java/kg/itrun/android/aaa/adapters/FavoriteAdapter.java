@@ -58,7 +58,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
 
     public interface FavoriteAdapterListener {
         void onFavoriteClick(Favorite favorite);
-
+   // test
     }
 
     public class FavoriteVH extends RecyclerView.ViewHolder {
