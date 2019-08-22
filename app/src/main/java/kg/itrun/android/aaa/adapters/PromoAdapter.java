@@ -17,11 +17,13 @@ import java.util.List;
 
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.data.News;
+import kg.itrun.android.aaa.data.Product;
 import kg.itrun.android.aaa.data.Promo;
 
 public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.PromoVH> {
 
     private List<Promo> promoList = new ArrayList<>();
+    private List<Product> products;
 
     private LayoutInflater inflater;
     private Context context;
@@ -46,14 +48,29 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.PromoVH> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PromoAdapter.PromoVH holder, int position) {
+    public void onBindViewHolder(@NonNull PromoAdapter.PromoVH holder, final int position) {
         Promo promo = promoList.get(position);
+        final Product product = products.get(position);
         holder.textViewName.setText(promo.getName());
         holder.textViewNewPrice.setText("" + promo.getNewPrice());
         holder.textViewOldPrice.setPaintFlags(holder.textViewOldPrice.getPaintFlags() |
                 Paint.STRIKE_THRU_TEXT_FLAG);
+        holder.textViewProductInfo.setText(promo.getProductInfo());
+        holder.promoMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                product.decrementCount();
+                notifyDataSetChanged();
+            }
+        });
+        holder.promoPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                product.incrementCount();
+                notifyDataSetChanged();
+            }
+        });
     }
-
 
     @Override
     public int getItemCount() {
@@ -66,7 +83,8 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.PromoVH> {
         private TextView textViewOldPrice;
         private TextView textViewNewPrice;
         private TextView textViewProductInfo;
-        private ImageView share;
+        private ImageView share, promoMinus, promoPlus;
+
 
 
         public PromoVH(@NonNull View itemView) {
@@ -76,6 +94,8 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.PromoVH> {
              textViewOldPrice = itemView.findViewById(R.id.OldPrice);
              textViewNewPrice = itemView.findViewById(R.id.NewPrice);
              textViewProductInfo = itemView.findViewById(R.id.PromoInfo);
+             promoPlus = itemView.findViewById(R.id.promoPlus);
+             promoMinus = itemView.findViewById(R.id.promoMinus);
 
              share = itemView.findViewById(R.id.btnShare);
         }
