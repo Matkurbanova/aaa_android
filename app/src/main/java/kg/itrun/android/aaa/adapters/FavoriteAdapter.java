@@ -23,6 +23,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
 
     private LayoutInflater inflater;
     private Context context;
+    private FavoriteAdapterListener listener;
 
     public FavoriteAdapter(Context context) {
         inflater = LayoutInflater.from(context);
@@ -55,12 +56,18 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         return favoriteList.size();
     }
 
+    public interface FavoriteAdapterListener {
+        void onFavoriteClick(Favorite favorite);
+
+    }
+
     public class FavoriteVH extends RecyclerView.ViewHolder {
         private TextView textViewSubName;
         private TextView textViewProductName;
         private ImageView imageViewFavorite;
         private TextView textViewPrice;
         private ImageView imageViewDelete;
+
 
         public FavoriteVH(@NonNull View itemView) {
             super(itemView);

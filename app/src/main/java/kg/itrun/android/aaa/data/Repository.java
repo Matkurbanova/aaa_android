@@ -19,8 +19,18 @@ public class Repository {
 
     private Repository() {
         productsList.addAll(DataGen.genProducts(25));
+
         products.setValue(productsList);
+
+        favoriteList.addAll(DataGen.genFavorite(25));
+        favorite.setValue(favoriteList);
     }
+
+    private MutableLiveData<List<Favorite>>favorite=new MutableLiveData<>();
+    private MutableLiveData<List<Favorite>>basketFavorite=new MutableLiveData<>();
+    private List<Favorite>basketFavoriteList = new ArrayList<>();
+    private List<Favorite>favoriteList=new ArrayList<>();
+
 
     private MutableLiveData<List<Product>> products = new MutableLiveData<>();
     private MutableLiveData<List<Product>> basketProducts = new MutableLiveData<>();
@@ -36,8 +46,18 @@ public class Repository {
         return products;
     }
 
+
     public void addBasketProduct(Product product) {
         basketProductsList.add(product);
         basketProducts.setValue(basketProductsList);
     }
+    public MutableLiveData<List<Favorite>>getFavorite(){
+        return favorite;
+    }
+public MutableLiveData<List<Favorite>>getBasketFavorite(){
+        return basketFavorite;
+}
+public void addBasketFavorite(Favorite favorite){
+    basketFavoriteList.add(favorite);
+    basketFavorite.setValue(basketFavoriteList);}
 }
