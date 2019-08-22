@@ -15,18 +15,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.adapters.FavoriteAdapter;
-import kg.itrun.android.aaa.adapters.NewsAdapter;
+import kg.itrun.android.aaa.data.Favorite;
+import kg.itrun.android.aaa.view.models.FavoriteViewModel;
 
-public class FavoriteFragment extends Fragment {
+public class FavoriteFragment extends Fragment implements FavoriteAdapter.FavoriteAdapterListener {
 
     private RecyclerView recyclerViewFavorite;
     private FavoriteAdapter favoriteAdapter;
+    private FavoriteFragmentListener listener;
+    private FavoriteViewModel favoriteViewModel;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.favorite_fragment, container, false);
         initViews(view);
         return view;
+
 
     }
     private void initViews(View view) {
@@ -40,4 +45,12 @@ public class FavoriteFragment extends Fragment {
         favoriteAdapter.setFavoriteList(DataGen.genFavorite(35));
     }
 
+    @Override
+    public void onFavoriteClick(Favorite favorite) {
+        listener.onFavoriteSelect(favorite);
+
+    }
+    public interface FavoriteFragmentListener{
+        void onFavoriteSelect(Favorite favorite);
+    }
 }
