@@ -1,6 +1,8 @@
 package kg.itrun.android.aaa.data;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
 
     public Product() {
 

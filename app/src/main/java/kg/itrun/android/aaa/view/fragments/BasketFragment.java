@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.adapters.BasketAdapter;
 import kg.itrun.android.aaa.data.Product;
@@ -73,7 +72,7 @@ public class BasketFragment extends Fragment {
 
     public void initView(View vi) {
         textViewDelivery = vi.findViewById(R.id.textViewDelivery);
-        textViewSum = vi.findViewById(R.id.textViewSum);
+        textViewSum = vi.findViewById(R.id.textViewSumText);
         textViewTotal = vi.findViewById(R.id.textViewTotal);
         buttonBuy = vi.findViewById(R.id.buttonBuy);
     }

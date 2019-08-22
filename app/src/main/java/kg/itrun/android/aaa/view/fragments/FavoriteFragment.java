@@ -39,5 +39,4 @@ public class FavoriteFragment extends Fragment {
         recyclerViewFavorite.setAdapter(favoriteAdapter);
         favoriteAdapter.setFavoriteList(DataGen.genFavorite(35));
     }
-
 }

@@ -100,7 +100,7 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketVH> 
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.titleBasket);
             textViewDescription = itemView.findViewById(R.id.descriptionBasket);
-            editTextCount = itemView.findViewById(R.id.textViewCount);
+            editTextCount = itemView.findViewById(R.id.textViewCountText);
             textViewPrice = itemView.findViewById(R.id.textViewPrice);
 
             imageViewIcon = itemView.findViewById(R.id.imageViewMain);
