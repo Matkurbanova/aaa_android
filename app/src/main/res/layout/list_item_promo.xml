@@ -41,7 +41,7 @@
         app:srcCompat="@drawable/ic_favorite_border_black_24dp" />
 
     <ImageView
-        android:id="@+id/Share"
+        android:id="@+id/promoShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="308dp"
@@ -63,7 +63,7 @@
         android:textSize="20sp"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Share" />
+        app:layout_constraintTop_toTopOf="@+id/promoShare" />
 
     <TextView
         android:id="@+id/NewPrice"

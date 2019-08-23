@@ -22,8 +22,11 @@ public class HistoryFragment extends Fragment {
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = LayoutInflater.from(getContext()).inflate(R.layout.promo_fragment, container, false);
-            //initViews(view);
+            View view = LayoutInflater.from(getContext()).inflate(R.layout.history_fragment, container, false);
+            initViews(view);
             return view;
         }
+
+    private void initViews( View view){
+    }
 }

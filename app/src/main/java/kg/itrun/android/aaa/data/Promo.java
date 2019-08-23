@@ -1,39 +1,54 @@
 package kg.itrun.android.aaa.data;
 
-public class Promo extends Product {
+public class Promo {
 
     public Promo() {
     }
 
     public Promo(String name) {
-        super(name);
+        this.name = name;
     }
 
+    private String name;
+    private double oldPrice;
     private Double newPrice;
-    private String promoDescription;
+    private String productInfo;
+    private String links;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public double getOldPrice() {
-        return super.getPrice();
+        return oldPrice;
     }
 
-    public void setOldPrice(double oldPrice) {
-        setPrice(oldPrice);
+    public void setOldPrice(double icon) {
+        this.oldPrice = icon;
     }
 
     public double getNewPrice() {
         return newPrice;
     }
 
-    public void setNewPrice(double newPrice) {
-        this.newPrice = newPrice;
+    public void setNewPrice(double icon) {
+        this.newPrice = icon;
     }
 
-    public String getPromoDescription() {
-        return promoDescription;
+    public String getProductInfo() {
+        return productInfo;
     }
 
 
-    public void setPromoDescription(String description) {
-        this.promoDescription = description;
+    public void setProductInfo(String icon) {
+        this.productInfo = icon;
+    }
+
+    public String getLinks(){
+        return links;
     }
 }

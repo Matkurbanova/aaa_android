@@ -22,6 +22,7 @@ import kg.itrun.android.aaa.data.SubCategory;
 import kg.itrun.android.aaa.view.fragments.BasketFragment;
 import kg.itrun.android.aaa.view.fragments.CategoryFragment;
 import kg.itrun.android.aaa.view.fragments.FavoriteFragment;
+import kg.itrun.android.aaa.view.fragments.HistoryFragment;
 import kg.itrun.android.aaa.view.fragments.NewsFragment;
 import kg.itrun.android.aaa.view.fragments.ProductFragment;
 import kg.itrun.android.aaa.view.fragments.ProductsFragment;
@@ -104,6 +105,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_purchase_history:
                 toolbar.setTitle(R.string.menu_purchase_history);
                 System.out.println("PURCHASE HISTORY");
+                showFragment(HistoryFragment.class);
                 break;
             case R.id.nav_chat:
                 toolbar.setTitle(R.string.menu_chat);
