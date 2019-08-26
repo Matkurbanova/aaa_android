@@ -8,4 +8,5 @@
     <color name="colorProductBackground">#FFFFFF</color>
     <color name="horizontal_line">#ADADAD</color>
     <color name="text_like_counter">#2b5a83</color>
+    <color name="less_black">#252525</color>
 </resources>

@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity
         SubCategoryFragment.SubCategoryFragmentListener,
         View.OnClickListener,
         CategoryFragment.CategoryFragmentListener,
-        ProductsFragment.ProductsFragmentListener {
+        ProductsFragment.ProductsFragmentListener,
+        BasketFragment.BasketFragmentListener {
 
     private Toolbar toolbar;
     private Fragment currentFragment;
@@ -92,14 +93,11 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_favorite:
                 toolbar.setTitle(R.string.menu_favorite);
                 showFragment(SubCategoryFragment.class);
-                showFragment(FavoriteFragment.class);
-
-
                 break;
             case R.id.nav_personal_cabinet:
                 toolbar.setTitle(R.string.menu_personal_cabinet);
                 System.out.println("PERSONAL CABINET");
-                showFragment(Fragment.class);
+                showFragment(ProductFragment.class);
                 break;
             case R.id.nav_purchase_history:
                 toolbar.setTitle(R.string.menu_purchase_history);
@@ -160,6 +158,10 @@ public class MainActivity extends AppCompatActivity
             showFragment(ProductsFragment.class);
     }
 
+    @Override
+    public void onPayClick() {
+        showFragment(PaymentFragment.class, currentFragment.getTag());
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
