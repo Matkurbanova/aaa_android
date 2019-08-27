@@ -25,6 +25,7 @@ import kg.itrun.android.aaa.view.fragments.FavoriteFragment;
 import kg.itrun.android.aaa.view.fragments.HistoryFragment;
 import kg.itrun.android.aaa.view.fragments.NewsFragment;
 import kg.itrun.android.aaa.view.fragments.PaymentFragment;
+import kg.itrun.android.aaa.view.fragments.PersonalFragment;
 import kg.itrun.android.aaa.view.fragments.ProductFragment;
 import kg.itrun.android.aaa.view.fragments.ProductsFragment;
 import kg.itrun.android.aaa.view.fragments.PromoFragment;
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_personal_cabinet:
                 toolbar.setTitle(R.string.menu_personal_cabinet);
                 System.out.println("PERSONAL CABINET");
-                showFragment(ProductFragment.class);
+                showFragment(PersonalFragment.class);
                 break;
             case R.id.nav_purchase_history:
                 toolbar.setTitle(R.string.menu_purchase_history);
