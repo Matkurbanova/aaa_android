@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,22 +16,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kg.itrun.android.aaa.R;
-import kg.itrun.android.aaa.data.Product;
+import kg.itrun.android.aaa.data.Basket;
 
 public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketVH> {
 
     private LayoutInflater inflater;
+    private BasketListener listener;
 
-    private List<Product> products;
+    public void setListener(BasketListener listener) {
+        this.listener = listener;
+    }
+
+    private List<Basket> basketList;
 
     public BasketAdapter(Context context){
         inflater = LayoutInflater.from(context);
-        products = new ArrayList<>();
+        basketList = new ArrayList<>();
     }
 
-    public void setProducts(List<Product>list){
-        this.products.clear();
-        this.products.addAll(list);
+    public void setBasket(List<Basket>list){
+        this.basketList.clear();
+        this.basketList.addAll(list);
         notifyDataSetChanged();
     }
 
@@ -44,29 +50,31 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketVH> 
 
     @Override
     public void onBindViewHolder(@NonNull BasketVH holder, final int position) {
-        final Product product = products.get(position);
-        holder.textViewTitle.setText(product.getName());
-        holder.textViewDescription.setText(product.getDescription());
-        holder.editTextCount.setText(String.valueOf(product.getCount()));
-        holder.textViewPrice.setText(String.valueOf(product.getPrice()));
+        final Basket basket = basketList.get(position);
+        holder.textViewTitle.setText(basket.getName());
+        holder.textViewDescription.setText(basket.getDescription());
+        holder.editTextCount.setText(String.valueOf(basket.getCount()));
+        holder.textViewPrice.setText(String.valueOf(basket.getPrice()));
         holder.imageViewDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                products.remove(position);
+                basketList.remove(position);
                 notifyDataSetChanged();
             }
         });
         holder.imageViewRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                product.decrementCount();
+                basket.decrementCount();
+                listener.update();
                 notifyDataSetChanged();
             }
         });
         holder.imageViewPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                product.incrementCount();
+                basket.incrementCount();
+                listener.update();
                 notifyDataSetChanged();
             }
         });
@@ -74,16 +82,16 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketVH> 
 
     @Override
     public int getItemCount() {
-        return products.size();
+        return basketList.size();
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<Basket> getBasket() {
+        return basketList;
     }
 
     public double getSum(){
         double sum= 0;
-        for (Product p : products) {
+        for (Basket p : basketList) {
             sum = sum + p.getPrice() * p.getCount();
         }
         return sum;
@@ -94,6 +102,7 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketVH> 
         private TextView textViewTitle, textViewDescription,textViewPrice;
         private EditText editTextCount;
         private ImageView imageViewIcon,imageViewPlus, imageViewRemove, imageViewDelete;
+        private Button buttonBuy;
 
 
         public BasketVH(@NonNull View itemView) {
@@ -107,6 +116,12 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketVH> 
             imageViewPlus = itemView.findViewById(R.id.imageViewPlus);
             imageViewRemove = itemView.findViewById(R.id.imageViewMinus);
             imageViewDelete = itemView.findViewById(R.id.imageViewDelete);
+
+            buttonBuy = itemView.findViewById(R.id.buttonBuy);
         }
+    }
+
+    public interface BasketListener{
+        void update();
     }
 }

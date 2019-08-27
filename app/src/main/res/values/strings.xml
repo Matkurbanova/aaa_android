@@ -37,6 +37,15 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_payment">Имя</string>
+    <string name="phone_payment">Телефон</string>
+    <string name="address_payment">Адрес доставки</string>
+    <string name="door_code">Код двери/домофона</string>
+    <string name="additional_info">Дополнительная информация</string>
+    <string name="date_payment">Выберите дату доставки</string>
+    <string name="cart_payment">Оплата картой</string>
+    <string name="cash_payment">Оплата наличными</string>
+    <string name="description_payment">    Коммисия 3% от суммы транзакции</string>
     <string name="share_news">Поделиться новостью</string>
     <string name="added">добавлено</string>
 </resources>

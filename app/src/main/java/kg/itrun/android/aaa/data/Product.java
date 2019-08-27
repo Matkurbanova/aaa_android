@@ -14,16 +14,9 @@ public class Product implements Serializable {
 
     private String image;
     private String name;
+    private String description;
     private double price;
 
-    public void decrementCount(){
-        if(count > 1){
-            count--;
-        }
-    }
-    public void incrementCount(){
-        count++;
-    }
 
     public String getDescription() {
         return description;
@@ -33,17 +26,6 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    private String description;
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    private int count;
 
     public String getImage() {
         return image;

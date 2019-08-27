@@ -17,8 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.adapters.ProductsAdapter;
+import kg.itrun.android.aaa.data.Basket;
 import kg.itrun.android.aaa.data.Product;
 import kg.itrun.android.aaa.view.models.BasketViewModel;
 import kg.itrun.android.aaa.view.models.ProductsViewModel;
@@ -76,5 +78,7 @@ public class ProductsFragment extends Fragment
 
     public interface ProductsFragmentListener {
         void onProductSelect(Product product);
+        basketViewModel.addProduct(new Basket(product));
+        System.out.println("ADD TO BASKET: " + product.getName());
     }
 }

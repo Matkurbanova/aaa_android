@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
-import kg.itrun.android.aaa.data.Favorite;
 import kg.itrun.android.aaa.data.Product;
 import kg.itrun.android.aaa.data.Repository;
 
