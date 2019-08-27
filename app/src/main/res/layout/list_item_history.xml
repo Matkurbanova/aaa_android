@@ -3,75 +3,62 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textViewHist"
-        android:layout_width="0dp"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="История покупок"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/position_of_products"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewTo"
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="до 31.01.2019"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textViewFrom"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHist" />
+        android:text="@string/all_sum"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
-        android:id="@+id/textViewFrom"
+        android:id="@+id/textViewDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
-        android:text="от 01.01.2019"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHist" />
+        android:layout_marginBottom="8dp"
+        android:text="27.08.2019"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <ImageView
-        android:id="@+id/imageViewDown"
-        android:layout_width="25dp"
-        android:layout_height="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewFrom"
-        app:layout_constraintStart_toEndOf="@+id/textViewFrom"
-        app:layout_constraintTop_toTopOf="@+id/textViewFrom"
-        app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
-
-    <ImageView
-        android:id="@+id/imageViewDown2"
-        android:layout_width="25dp"
-        android:layout_height="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewTo"
-        app:layout_constraintStart_toEndOf="@+id/textViewTo"
-        app:layout_constraintTop_toTopOf="@+id/textViewTo"
-        app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="395dp"
+    <TextView
+        android:id="@+id/textViewCount"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:text="13"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFrom" />
+        app:layout_constraintTop_toTopOf="@+id/textView" />
 
+    <TextView
+        android:id="@+id/textViewSum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:text="2100"
+        app:layout_constraintEnd_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/som"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

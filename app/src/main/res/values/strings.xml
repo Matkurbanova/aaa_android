@@ -48,4 +48,6 @@
     <string name="description_payment">    Коммисия 3% от суммы транзакции</string>
     <string name="share_news">Поделиться новостью</string>
     <string name="added">добавлено</string>
+    <string name="position_of_products">Количество товаров</string>
+    <string name="all_sum">Сумма</string>
 </resources>

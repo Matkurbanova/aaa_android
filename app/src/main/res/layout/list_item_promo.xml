@@ -44,10 +44,8 @@
         android:id="@+id/promoShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.101"
-        app:layout_constraintStart_toStartOf="@+id/Liked"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/Liked"
         app:layout_constraintTop_toTopOf="@+id/Liked"
         app:srcCompat="@drawable/ic_menu_share" />
 
