@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
-import kg.itrun.android.aaa.data.Product;
+import kg.itrun.android.aaa.data.Basket;
+import kg.itrun.android.aaa.data.Favorite;
 import kg.itrun.android.aaa.data.Repository;
 
 public class BasketViewModel extends ViewModel {
@@ -15,11 +16,11 @@ public class BasketViewModel extends ViewModel {
         repository = Repository.getInstance();
     }
 
-    public MutableLiveData<List<Product>> getProducts() {
+    public MutableLiveData<List<Basket>> getProducts() {
         return repository.getBasketProducts();
     }
 
-    public void addProduct(Product product) {
+    public void addProduct(Basket product) {
         repository.addBasketProduct(product);
     }
     public MutableLiveData<List<Favorite>>getFavorite(){

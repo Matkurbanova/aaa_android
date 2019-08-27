@@ -78,7 +78,5 @@ public class ProductsFragment extends Fragment
 
     public interface ProductsFragmentListener {
         void onProductSelect(Product product);
-        basketViewModel.addProduct(new Basket(product));
-        System.out.println("ADD TO BASKET: " + product.getName());
     }
 }

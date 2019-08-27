@@ -9,12 +9,6 @@ public class Basket extends Product {
         super(name);
     }
 
-    public Basket(Product product) {
-        setPrice(product.getPrice());
-        setDescription(product.getDescription());
-        setName(product.getName());
-        setImage(product.getImage());
-    }
 
     public int count = 1;
 

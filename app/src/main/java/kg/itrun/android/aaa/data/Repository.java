@@ -33,12 +33,12 @@ public class Repository {
 
 
     private MutableLiveData<List<Product>> products = new MutableLiveData<>();
-    private MutableLiveData<List<Product>> basketProducts = new MutableLiveData<>();
+    private MutableLiveData<List<Basket>> basketProducts = new MutableLiveData<>();
 
-    private List<Product> basketProductsList = new ArrayList<>();
+    private List<Basket> basketProductsList = new ArrayList<>();
     private List<Product> productsList = new ArrayList<>();
 
-    public MutableLiveData<List<Product>> getBasketProducts() {
+    public MutableLiveData<List<Basket>> getBasketProducts() {
         return basketProducts;
     }
 
@@ -47,7 +47,7 @@ public class Repository {
     }
 
 
-    public void addBasketProduct(Product product) {
+    public void addBasketProduct(Basket product) {
         basketProductsList.add(product);
         basketProducts.setValue(basketProductsList);
     }

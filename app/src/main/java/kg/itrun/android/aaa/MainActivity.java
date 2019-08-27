@@ -24,6 +24,7 @@ import kg.itrun.android.aaa.view.fragments.CategoryFragment;
 import kg.itrun.android.aaa.view.fragments.FavoriteFragment;
 import kg.itrun.android.aaa.view.fragments.HistoryFragment;
 import kg.itrun.android.aaa.view.fragments.NewsFragment;
+import kg.itrun.android.aaa.view.fragments.PaymentFragment;
 import kg.itrun.android.aaa.view.fragments.ProductFragment;
 import kg.itrun.android.aaa.view.fragments.ProductsFragment;
 import kg.itrun.android.aaa.view.fragments.PromoFragment;
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_favorite:
                 toolbar.setTitle(R.string.menu_favorite);
-                showFragment(SubCategoryFragment.class);
+                showFragment(FavoriteFragment.class);
                 break;
             case R.id.nav_personal_cabinet:
                 toolbar.setTitle(R.string.menu_personal_cabinet);
@@ -164,6 +165,7 @@ public class MainActivity extends AppCompatActivity
     public void onPayClick() {
         showFragment(PaymentFragment.class, currentFragment.getTag());
     }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

@@ -53,7 +53,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/textViewFrom"
         app:layout_constraintStart_toEndOf="@+id/textViewFrom"
         app:layout_constraintTop_toTopOf="@+id/textViewFrom"
-        app:srcCompat="@drawable/chevron_down" />
+        app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
 
     <ImageView
         android:id="@+id/imageViewDown2"
@@ -62,7 +62,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/textViewTo"
         app:layout_constraintStart_toEndOf="@+id/textViewTo"
         app:layout_constraintTop_toTopOf="@+id/textViewTo"
-        app:srcCompat="@drawable/chevron_down" />
+        app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="395dp"

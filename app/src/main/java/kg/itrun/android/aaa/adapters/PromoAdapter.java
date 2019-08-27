@@ -24,7 +24,6 @@ import kg.itrun.android.aaa.data.Promo;
 public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.PromoVH> {
 
     private List<Promo> promoList = new ArrayList<>();
-    private List<Product> products;
 
     private LayoutInflater inflater;
     private Context context;
@@ -58,7 +57,6 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.PromoVH> {
     @Override
     public void onBindViewHolder(@NonNull PromoAdapter.PromoVH holder, final int position) {
         final Promo promo = promoList.get(position);
-        final Product product = products.get(position);
         holder.textViewName.setText(promo.getName());
         holder.textViewNewPrice.setText("" + promo.getNewPrice());
         holder.textViewOldPrice.setPaintFlags(holder.textViewOldPrice.getPaintFlags() |
@@ -115,7 +113,7 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.PromoVH> {
             promoMinus = itemView.findViewById(R.id.promoMinus);
             textQuantity = itemView.findViewById(R.id.Quantity);
 
-            share = itemView.findViewById(R.id.btnShare);
+            share = itemView.findViewById(R.id.promoShare);
         }
     }
 
