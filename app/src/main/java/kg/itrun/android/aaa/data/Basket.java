@@ -5,6 +5,10 @@ public class Basket extends Product {
     public Basket() {
     }
 
+    public Basket(String name) {
+        super(name);
+    }
+
     public Basket(Product product) {
         setPrice(product.getPrice());
         setDescription(product.getDescription());

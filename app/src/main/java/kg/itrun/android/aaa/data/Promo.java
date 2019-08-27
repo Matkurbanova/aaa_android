@@ -1,6 +1,6 @@
 package kg.itrun.android.aaa.data;
 
-public class Promo extends Product {
+public class Promo extends Basket {
 
     public Promo() {
     }
