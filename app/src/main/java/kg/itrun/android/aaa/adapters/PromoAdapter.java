@@ -63,18 +63,21 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.PromoVH> {
         holder.textViewNewPrice.setText("" + promo.getNewPrice());
         holder.textViewOldPrice.setPaintFlags(holder.textViewOldPrice.getPaintFlags() |
                 Paint.STRIKE_THRU_TEXT_FLAG);
-        holder.textViewProductInfo.setText(promo.getProductInfo());
+        holder.textViewProductInfo.setText(promo.getPromoDescription());
+
+        holder.textQuantity.setText(String.valueOf(promo.getCount()));
+
         holder.promoMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                product.decrementCount();
+                promo.decrementCount();
                 notifyDataSetChanged();
             }
         });
         holder.promoPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                product.incrementCount();
+                promo.incrementCount();
                 notifyDataSetChanged();
             }
         });
@@ -97,21 +100,22 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.PromoVH> {
         private TextView textViewOldPrice;
         private TextView textViewNewPrice;
         private TextView textViewProductInfo;
+        private TextView textQuantity;
         private ImageView share, promoMinus, promoPlus;
-
 
 
         public PromoVH(@NonNull View itemView) {
             super(itemView);
 
-             textViewName = itemView.findViewById(R.id.textViewName);
-             textViewOldPrice = itemView.findViewById(R.id.OldPrice);
-             textViewNewPrice = itemView.findViewById(R.id.NewPrice);
-             textViewProductInfo = itemView.findViewById(R.id.PromoInfo);
-             promoPlus = itemView.findViewById(R.id.promoPlus);
-             promoMinus = itemView.findViewById(R.id.promoMinus);
+            textViewName = itemView.findViewById(R.id.textViewName);
+            textViewOldPrice = itemView.findViewById(R.id.OldPrice);
+            textViewNewPrice = itemView.findViewById(R.id.NewPrice);
+            textViewProductInfo = itemView.findViewById(R.id.PromoInfo);
+            promoPlus = itemView.findViewById(R.id.promoPlus);
+            promoMinus = itemView.findViewById(R.id.promoMinus);
+            textQuantity = itemView.findViewById(R.id.Quantity);
 
-             share = itemView.findViewById(R.id.btnShare);
+            share = itemView.findViewById(R.id.btnShare);
         }
     }
 
