@@ -47,8 +47,20 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         final Favorite favorite = favoriteList.get(position);
         holder.textViewSubName.setText(favorite.getText());
         holder.textViewProductName.setText(favorite.getText());
+
         holder.textViewPrice.setText("" + favorite.getPrice());
+
+        holder.imageViewDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                favoriteList.remove(position);
+                notifyDataSetChanged();
+            }
+        });
+
     }
+
+
 
     @Override
     public int getItemCount() {
