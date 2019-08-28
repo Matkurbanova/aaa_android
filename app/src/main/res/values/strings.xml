@@ -50,4 +50,9 @@
     <string name="added">добавлено</string>
     <string name="position_of_products">Количество товаров</string>
     <string name="all_sum">Сумма</string>
+    <string name="price_figures">999</string>
+    <string name="select">Выбрать</string>
+    <string name="undo">Отмена</string>
+    <string name="product_title">Мороженое Пломбир Чистая Линия ванильный, 450 г.</string>
+    <string name="read_more">Узнать больше</string>
 </resources>
