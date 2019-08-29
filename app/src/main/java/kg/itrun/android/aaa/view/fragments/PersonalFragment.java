@@ -19,11 +19,12 @@ import kg.itrun.android.aaa.R;
 public class PersonalFragment extends Fragment implements View.OnClickListener {
 
     private ImageView imageViewAvatar;
-    private EditText name;
+    private TextView name;
     private TextView Bonus, Skidki, BonusSum, SkidkiSum;
     private Button buttonEdit;
     private ConstraintLayout layoutUserData;
     private EditText editName, editSrName, Namber, DpNamber, Password;
+    private EditText editTextEmail;
     private TextView textViewDateRoj, textViewPol;
 
     @Nullable
@@ -37,7 +38,7 @@ public class PersonalFragment extends Fragment implements View.OnClickListener {
 
     private void initViews(View v) {
         imageViewAvatar = v.findViewById(R.id.avatar);
-        name = v.findViewById(R.id.name);
+        name = v.findViewById(R.id.textViewName);
         Bonus = v.findViewById(R.id.bonus);
         Skidki = v.findViewById(R.id.Skidki);
         BonusSum = v.findViewById(R.id.bonusSum);
