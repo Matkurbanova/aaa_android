@@ -19,6 +19,7 @@ import com.google.android.material.navigation.NavigationView;
 import kg.itrun.android.aaa.data.Category;
 import kg.itrun.android.aaa.data.Product;
 import kg.itrun.android.aaa.data.SubCategory;
+import kg.itrun.android.aaa.view.fragments.AuthorizationFragment;
 import kg.itrun.android.aaa.view.fragments.BasketFragment;
 import kg.itrun.android.aaa.view.fragments.CategoryFragment;
 import kg.itrun.android.aaa.view.fragments.FavoriteFragment;
@@ -110,8 +111,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_chat:
                 toolbar.setTitle(R.string.menu_chat);
                 System.out.println("CHAT");
-
-                showFragment(BasketFragment.class);
+                showFragment(AuthorizationFragment.class);
                 break;
 
         }
@@ -175,6 +175,7 @@ public class MainActivity extends AppCompatActivity
                     showFragment(BasketFragment.class, currentFragment.getTag());
                 else
                     showFragment(BasketFragment.class);
+                toolbar.setTitle(getString(R.string.basket));
                 break;
         }
     }
