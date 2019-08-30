@@ -56,4 +56,16 @@
     <string name="product_title">Мороженое Пломбир Чистая Линия ванильный, 450 г.</string>
     <string name="read_more">Узнать больше</string>
     <string name="basket">Корзина</string>
+    <string name="edit_text_name">Имя*</string>
+    <string name="username">Фамилия</string>
+    <string name="hb">Дата рождения</string>
+    <string name="registration_phone">Номер телефона*</string>
+    <string name="registration_email">Email</string>
+    <string name="registration_password">Пароль*</string>
+    <string name="confirm_password">Подтверждение пароля*</string>
+    <string name="text">*отмечены поля, обязательные к заполнению </string>
+    <string name="confirm_phonenumber">Подтвердить номер телефона</string>
+    <string name="or">или</string>
+
+    <string name="dateerror">Enter a valid date</string>
 </resources>

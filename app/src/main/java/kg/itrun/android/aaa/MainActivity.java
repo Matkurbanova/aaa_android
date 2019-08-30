@@ -30,6 +30,7 @@ import kg.itrun.android.aaa.view.fragments.PersonalFragment;
 import kg.itrun.android.aaa.view.fragments.ProductFragment;
 import kg.itrun.android.aaa.view.fragments.ProductsFragment;
 import kg.itrun.android.aaa.view.fragments.PromoFragment;
+import kg.itrun.android.aaa.view.fragments.RegistrationFragment;
 import kg.itrun.android.aaa.view.fragments.SubCategoryFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_purchase_history:
                 toolbar.setTitle(R.string.menu_purchase_history);
                 System.out.println("PURCHASE HISTORY");
-                showFragment(HistoryFragment.class);
+                showFragment(RegistrationFragment.class);
                 break;
             case R.id.nav_chat:
                 toolbar.setTitle(R.string.menu_chat);
