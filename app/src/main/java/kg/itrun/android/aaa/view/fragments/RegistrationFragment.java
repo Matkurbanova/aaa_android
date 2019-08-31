@@ -20,7 +20,7 @@ import com.facebook.login.widget.LoginButton;
 import kg.itrun.android.aaa.R;
 
 
-public class RegistrationFragment extends Fragment {
+public class RegistrationFragment extends Fragment implements View.OnClickListener {
     private EditText editTextName, editTextUsername,editTextPhone,editTextEmail,editTextPassword,editTextConfirmPassword,editTextHB;
     private TextView textViewHB,textViewGender,textViewText,textViewOr;
     private ImageView imageViewGoogle;
@@ -52,5 +52,11 @@ public class RegistrationFragment extends Fragment {
         buttonConfirmPhone=v.findViewById(R.id.buttonConfirmPhone) ;
         radioButtonFemale=v.findViewById(R.id.radioButtonFemale);
         radioButtonMale=v.findViewById(R.id.radioButtonMale);
+    }
+
+    @Override
+    public void onClick(View view) {
+
+
     }
 }
