@@ -1,4 +1,8 @@
 <resources>
+    <string name="facebook_app_id">417594582296318</string>
+    <string name="fb_login_protocol_scheme">fb417594582296318</string>
+
+
     <string name="app_name">AAA</string>
     <string name="title_activity_main2">Home</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -68,4 +72,7 @@
     <string name="or">или</string>
 
     <string name="dateerror">Enter a valid date</string>
+    <string name="female">женский</string>
+    <string name="male">мужской</string>
+    <string name="confirm_phone_number">Подтвердить номер телефона</string>
 </resources>

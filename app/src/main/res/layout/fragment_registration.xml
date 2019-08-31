@@ -18,8 +18,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:hint="@string/confirm_phonenumber"
-            android:text="Подтвердить номер телефона"
-            app:layout_constraintBottom_toTopOf="@+id/textViewOr"
+            android:text="@string/confirm_phone_number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewText" />
@@ -30,11 +29,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:hint="@string/edit_text_name"
             android:paddingLeft="5dp"
             android:paddingTop="4dp"
-            app:layout_constraintBottom_toTopOf="@+id/editTextUsername"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,11 +47,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:hint="@string/username"
             android:paddingLeft="5dp"
             android:paddingTop="4dp"
-            app:layout_constraintBottom_toTopOf="@+id/editTextHB"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,43 +62,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
             android:text="Пол:"
-            app:layout_constraintBottom_toTopOf="@+id/radioButtonFemale"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.538"
-            app:layout_constraintStart_toStartOf="parent" />
-
-
-        <RadioButton
-            android:id="@+id/radioButtonMale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="56dp"
-            android:text="мужской"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.947"
+            app:layout_constraintHorizontal_bias="0.543"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewGender" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextHB" />
 
-        <RadioButton
-            android:id="@+id/radioButtonFemale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="8dp"
-            android:text="женский"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewGender" />
 
         <EditText
             android:id="@+id/editTextPhone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
             android:ems="10"
@@ -111,7 +88,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioButtonMale" />
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
 
         <EditText
             android:id="@+id/editTextEmail"
@@ -175,13 +152,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="@string/text"
             android:paddingLeft="5dp"
             android:paddingTop="4dp"
             android:text="*отмечены поля, обязательные к заполнению"
-            app:layout_constraintBottom_toTopOf="@+id/buttonConfirmPhone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -209,37 +184,72 @@
             android:id="@+id/imageViewGoogle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="11dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageViewFacebook"
+            app:layout_constraintBottom_toTopOf="@+id/buttonFacebook"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewOr"
             app:srcCompat="@drawable/google_sign" />
 
-        <ImageView
-            android:id="@+id/imageViewFacebook"
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/buttonFacebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="123dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="11dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewGoogle"
-            app:srcCompat="@drawable/facebook" />
+            app:layout_constraintTop_toBottomOf="@+id/imageViewGoogle" />
 
         <EditText
             android:id="@+id/editTextHB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="9dp"
+            android:layout_marginTop="8dp"
 
             android:ems="10"
             android:hint="Дата рождения "
             android:inputType="date"
-            app:layout_constraintBottom_toTopOf="@+id/textViewGender"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextUsername" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewGender">
+
+            <RadioButton
+                android:id="@+id/radioButtonFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/female" />
+
+            <RadioButton
+                android:id="@+id/radioButtonMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/male" />
+        </RadioGroup>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

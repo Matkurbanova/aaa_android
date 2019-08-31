@@ -15,13 +15,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.facebook.login.widget.LoginButton;
+
 import kg.itrun.android.aaa.R;
 
 
 public class RegistrationFragment extends Fragment {
     private EditText editTextName, editTextUsername,editTextPhone,editTextEmail,editTextPassword,editTextConfirmPassword,editTextHB;
     private TextView textViewHB,textViewGender,textViewText,textViewOr;
-    private ImageView imageViewGoogle,imageViewFacebook;
+    private ImageView imageViewGoogle;
+    private LoginButton buttonFacebookLogin;
     private Button buttonConfirmPhone;
     private RadioButton radioButtonFemale,radioButtonMale;
     @Nullable
@@ -34,7 +37,7 @@ public class RegistrationFragment extends Fragment {
     }
     private void initViews(View v) {
         imageViewGoogle = v.findViewById(R.id.imageViewGoogle);
-        imageViewFacebook = v.findViewById(R.id.imageViewFacebook);
+        buttonFacebookLogin = v.findViewById(R.id.buttonFacebook);
         editTextName = v.findViewById(R.id.editTextName);
         editTextUsername = v.findViewById(R.id.editTextUsername);
         editTextPhone = v.findViewById(R.id.editTextPhone);

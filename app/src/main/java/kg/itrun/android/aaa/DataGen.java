@@ -1,15 +1,19 @@
 package kg.itrun.android.aaa;
 
+import android.telephony.mbms.MbmsErrors;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import kg.itrun.android.aaa.data.Category;
 import kg.itrun.android.aaa.data.Favorite;
+import kg.itrun.android.aaa.data.Message;
 import kg.itrun.android.aaa.data.News;
 import kg.itrun.android.aaa.data.Product;
 import kg.itrun.android.aaa.data.Promo;
 import kg.itrun.android.aaa.data.SubCategory;
+import kg.itrun.android.aaa.data.User;
 
 public class DataGen {
 
@@ -152,5 +156,33 @@ public class DataGen {
         }
 
         return favorites;
+    }
+
+    static String messageTexts[] = new String[]
+            {
+                    "Hello!",
+                    "Salam!",
+                    "Lorem ipsum dolor sit amet",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            };
+
+    public static List<Message> genMessage(int count) {
+        Random random = new Random();
+        List<Message> messages = new ArrayList<>();
+
+        User users[] = new User[]{
+                new User("01", "User 01"),
+                new User("02", "User 02")
+        };
+
+        for (int i = 0; i < count; i++) {
+            Message message = new Message(
+                    String.valueOf(i),
+                    messageTexts[random.nextInt(messageTexts.length)],
+                    users[random.nextInt(users.length)]
+            );
+            messages.add(message);
+        }
+        return messages;
     }
 }

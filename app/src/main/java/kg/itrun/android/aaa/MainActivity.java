@@ -32,6 +32,7 @@ import kg.itrun.android.aaa.view.fragments.ProductsFragment;
 import kg.itrun.android.aaa.view.fragments.PromoFragment;
 import kg.itrun.android.aaa.view.fragments.RegistrationFragment;
 import kg.itrun.android.aaa.view.fragments.SubCategoryFragment;
+import kg.itrun.android.aaa.view.fragments.SupportFragment;
 
 public class MainActivity extends AppCompatActivity
         implements
@@ -112,7 +113,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_chat:
                 toolbar.setTitle(R.string.menu_chat);
                 System.out.println("CHAT");
-                showFragment(AuthorizationFragment.class);
+                showFragment(SupportFragment.class);
                 break;
 
         }
