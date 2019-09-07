@@ -1,21 +1,23 @@
 package kg.itrun.android.aaa.view.fragments;
 
-        import android.os.Bundle;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.ImageView;
-        import android.widget.TextView;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-        import androidx.annotation.NonNull;
-        import androidx.annotation.Nullable;
-        import androidx.fragment.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-        import kg.itrun.android.aaa.R;
+import kg.itrun.android.aaa.AppStatics;
+import kg.itrun.android.aaa.R;
 
-public class AuthorizationFragment extends Fragment  implements View.OnClickListener {
+public class AuthorizationFragment extends AppFragment implements View.OnClickListener {
 
     private ImageView imageViewLogo;
     private TextView remember, registr;
@@ -36,8 +38,11 @@ public class AuthorizationFragment extends Fragment  implements View.OnClickList
         remember = v.findViewById(R.id.textViewRemember);
         registr = v.findViewById(R.id.textViewRegistr);
         buttonSignIn = v.findViewById(R.id.buttonOk);
-        editTextNamber=v.findViewById(R.id.editTextEmail);
-        editTextPassword=v.findViewById(R.id.editTextPassword);
+        editTextNamber = v.findViewById(R.id.editTextEmail);
+        editTextPassword = v.findViewById(R.id.editTextPassword);
+
+        registr.setOnClickListener(this);
+        buttonSignIn.setOnClickListener(this);
     }
 
 
@@ -58,17 +63,13 @@ public class AuthorizationFragment extends Fragment  implements View.OnClickList
                     editTextPassword.setError("Введите пароль");
                     return;
                 }
-
+                break;
             case R.id.textViewRegistr:
-                registr.setEnabled(false);
-                System.out.println("ok");
-
-
-
-
+                Bundle bundle = new Bundle();
+                bundle.putInt(AppStatics.ACTION, AppStatics.REGISTRATION);
+                listener.onAction(bundle);
+                break;
         }
-
     }
-
-    }
+}
 

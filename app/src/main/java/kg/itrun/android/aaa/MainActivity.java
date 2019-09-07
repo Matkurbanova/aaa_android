@@ -1,5 +1,6 @@
 package kg.itrun.android.aaa;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -166,7 +167,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onPayClick() {
-        showFragment(PaymentFragment.class, currentFragment.getTag());
+        Intent intent = new Intent(this, AuthorizationActivity.class);
+        intent.putExtra(AppStatics.ACTION, AppStatics.LOGIN);
+        startActivity(intent);
     }
 
     @Override
