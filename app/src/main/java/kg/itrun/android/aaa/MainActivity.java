@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_chat:
                 toolbar.setTitle(R.string.menu_chat);
                 System.out.println("CHAT");
-                showFragment(SupportFragment.class);
+                showFragment(AuthorizationFragment.class);
                 break;
 
         }

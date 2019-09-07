@@ -1,21 +1,21 @@
 package kg.itrun.android.aaa.view.fragments;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
+        import android.os.Bundle;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.Button;
+        import android.widget.EditText;
+        import android.widget.ImageView;
+        import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+        import androidx.annotation.NonNull;
+        import androidx.annotation.Nullable;
+        import androidx.fragment.app.Fragment;
 
-import kg.itrun.android.aaa.R;
+        import kg.itrun.android.aaa.R;
 
-public class AuthorizationFragment extends Fragment {
+public class AuthorizationFragment extends Fragment  implements View.OnClickListener {
 
     private ImageView imageViewLogo;
     private TextView remember, registr;
@@ -41,4 +41,34 @@ public class AuthorizationFragment extends Fragment {
     }
 
 
-}
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.buttonOk:
+                buttonSignIn.setEnabled(false);
+                String login = editTextNamber.getText().toString();
+                String password = editTextPassword.getText().toString();
+                if (login.isEmpty()) {
+                    editTextNamber.setError("Введите E-mail или номер");
+                    System.out.println("uki");
+                    return;
+
+                }
+                if (password.isEmpty()) {
+                    editTextPassword.setError("Введите пароль");
+                    return;
+                }
+
+            case R.id.textViewRegistr:
+                registr.setEnabled(false);
+                System.out.println("ok");
+
+
+
+
+        }
+
+    }
+
+    }
+
