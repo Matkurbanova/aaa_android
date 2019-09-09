@@ -54,15 +54,19 @@ public class AuthorizationFragment extends AppFragment implements View.OnClickLi
                 String login = editTextNamber.getText().toString();
                 String password = editTextPassword.getText().toString();
                 if (login.isEmpty()) {
-                    editTextNamber.setError("Введите E-mail или номер");
-                    System.out.println("uki");
+                    editTextNamber.setError("Введите номер");
                     return;
 
                 }
                 if (password.isEmpty()) {
                     editTextPassword.setError("Введите пароль");
                     return;
+
                 }
+                
+Bundle bundle1 =new Bundle();
+         bundle1.putInt(AppStatics.ACTION, AppStatics.PAYMENT);
+                listener.onAction(bundle1);
                 break;
             case R.id.textViewRegistr:
                 Bundle bundle = new Bundle();

@@ -65,6 +65,28 @@ public class RegistrationFragment extends AppFragment
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonConfirmPhone:
+                String name = editTextName.getText().toString();
+                String phone = editTextPhone.getText().toString();
+                String password = editTextPassword.getText().toString();
+                String confirmPassword = editTextConfirmPassword.getText().toString();
+                if (name.isEmpty()) {
+                    editTextName.setError("Введите имя");
+                    System.out.println("uki");
+                    return;
+
+                }
+                if (phone.isEmpty()) {
+                    editTextPhone.setError("Введите номер");
+                    return;
+                }
+                if (password.isEmpty()){
+                    editTextPassword.setError("Введите пароль");
+                    return;
+                }
+                if (confirmPassword.isEmpty()){
+                    editTextConfirmPassword.setError("Подтвердите пароль");
+                    return;
+                }
                 Bundle bundle = new Bundle();
                 bundle.putInt(AppStatics.ACTION, AppStatics.CODE);
                 listener.onAction(bundle);

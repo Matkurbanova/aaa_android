@@ -10,8 +10,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import kg.itrun.android.aaa.view.fragments.AuthorizationFragment;
+import kg.itrun.android.aaa.view.fragments.BasketFragment;
 import kg.itrun.android.aaa.view.fragments.CodeFragment;
 import kg.itrun.android.aaa.view.fragments.FragmentListener;
+import kg.itrun.android.aaa.view.fragments.PaymentFragment;
 import kg.itrun.android.aaa.view.fragments.RegistrationFragment;
 
 
@@ -64,6 +66,9 @@ public class AuthorizationActivity extends AppCompatActivity
                 break;
             case AppStatics.CODE:
                 showFragment(CodeFragment.class);
+                break;
+            case AppStatics.PAYMENT:
+                showFragment(BasketFragment.class);
 
         }
     }

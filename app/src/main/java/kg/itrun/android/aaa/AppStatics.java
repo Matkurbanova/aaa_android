@@ -7,5 +7,6 @@ public class AppStatics {
     public static final int REGISTRATION = 0;
     public static final int LOGIN = 1;
     public static final int CODE = 2;
+    public static final int PAYMENT=3;
 
 }
