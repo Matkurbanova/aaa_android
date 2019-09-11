@@ -13,16 +13,20 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
 import com.facebook.login.widget.LoginButton;
 
 import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.R;
+import kg.itrun.android.aaa.ValidationException;
 
 
 public class RegistrationFragment extends AppFragment
         implements View.OnClickListener {
+
+    private View view;
 
     private EditText editTextName, editTextUsername, editTextPhone, editTextEmail, editTextPassword, editTextConfirmPassword, editTextHB;
     private TextView textViewHB, textViewGender, textViewText, textViewOr;
@@ -34,7 +38,7 @@ public class RegistrationFragment extends AppFragment
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_registration, container, false);
+        view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_registration, container, false);
         initViews(view);
         return view;
 
@@ -65,32 +69,53 @@ public class RegistrationFragment extends AppFragment
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonConfirmPhone:
-                String name = editTextName.getText().toString();
-                String phone = editTextPhone.getText().toString();
-                String password = editTextPassword.getText().toString();
-                String confirmPassword = editTextConfirmPassword.getText().toString();
-                if (name.isEmpty()) {
-                    editTextName.setError("Введите имя");
-                    System.out.println("uki");
-                    return;
+                try {
+                    validate(editTextName, null, R.string.put_name);
+                    validate(editTextPhone, AppStatics.Rgxs.PHONE_NUMBER, R.string.put_number);
+                    validate(editTextPassword, AppStatics.Rgxs.PASSWORD, R.string.wrong_format);
+                    validate(editTextConfirmPassword, AppStatics.Rgxs.PASSWORD, R.string.wrong_format);
 
+                    if (!editTextPassword.getText().toString()
+                            .equals(editTextConfirmPassword.getText().toString()))
+                        throw new ValidationException(editTextConfirmPassword.getId(),
+                                getString(R.string.passwords_not_maches));
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(AppStatics.ACTION, AppStatics.CODE);
+                    listener.onAction(bundle);
+                } catch (ValidationException ex) {
+                    EditText editText = this.view.findViewById(ex.getViewId());
+                    editText.setError(ex.getMessage());
                 }
-                if (phone.isEmpty()) {
-                    editTextPhone.setError("Введите номер");
-                    return;
-                }
-                if (password.isEmpty()){
-                    editTextPassword.setError("Введите пароль");
-                    return;
-                }
-                if (confirmPassword.isEmpty()){
-                    editTextConfirmPassword.setError("Подтвердите пароль");
-                    return;
-                }
-                Bundle bundle = new Bundle();
-                bundle.putInt(AppStatics.ACTION, AppStatics.CODE);
-                listener.onAction(bundle);
                 break;
         }
+    }
+
+    private void validate(EditText editText, String regex, @StringRes int res)
+            throws ValidationException {
+        validate(editText.getText().toString(), regex, getString(res), editText.getId());
+    }
+
+    private void validate(EditText editText, String regex, String errorMessage)
+            throws ValidationException {
+        validate(editText.getText().toString(), regex, errorMessage, editText.getId());
+    }
+
+    /**
+     * Validates EditText fields
+     *
+     * @param text         - string that must be validate
+     * @param regex        - regular expression
+     * @param errorMessage - error message if not valid
+     * @param viewId       - view id to identify exception
+     * @throws ValidationException
+     */
+    private void validate(String text, String regex, String errorMessage, int viewId)
+            throws ValidationException {
+        if (text == null || text.isEmpty())
+            throw new ValidationException(viewId, errorMessage);
+
+        if (regex != null && !text.matches(regex))
+            throw new ValidationException(viewId, getString(R.string.wrong_format));
     }
 }

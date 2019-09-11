@@ -9,4 +9,8 @@ public class AppStatics {
     public static final int CODE = 2;
     public static final int PAYMENT=3;
 
+    public static class Rgxs{
+        public static final String PHONE_NUMBER = "\\+996(55|70|77|50|99)[0-9]{7}";
+        public static final String PASSWORD = "[a-zA-Z@!#$%^&*(_+=\\-0-9/,.|\\\\]{6,}";
+    }
 }

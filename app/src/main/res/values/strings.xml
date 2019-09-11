@@ -76,7 +76,12 @@
     <string name="male">мужской</string>
     <string name="confirm_phone_number">Подтвердить номер телефона</string>
     <string name="back">Назад</string>
-    <string name ="sumbit">Отправить</string>
+    <string name="sumbit">Отправить</string>
     <string name="code_from_sms">Пожалуйста, введите ваш код из смс ниже:</string>
     <string name="code">Код из смс*</string>
+
+    <string name="wrong_format">Не правильный формат</string>
+    <string name="put_number">Введите номер</string>
+    <string name="put_name">Введите имя</string>
+    <string name="passwords_not_maches">Пароли не совпадают</string>
 </resources>
