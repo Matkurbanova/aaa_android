@@ -3,12 +3,10 @@ package kg.itrun.android.aaa.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
@@ -16,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,13 +48,35 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
 
     @Override
     public void onBindViewHolder(@NonNull NewsVH holder, int position) {
+
         final News news = newsList.get(position);
         holder.textViewText.setText(news.getText());
         holder.textSwitcher.setText("" + news.getLikes());
 
+
         if (news.isLiked()) {
+
             holder.btnLike.setImageDrawable(context.getDrawable(R.drawable.heart_50));
-        }
+        } else {
+        holder.btnLike.setImageResource(R.drawable.ic_heart_outline_grey);
+    }
+        final Boolean[] clicked = {true};
+        holder.btnLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if (clicked[0]) {
+                    clicked[0] = false;
+                    holder.btnLike.setImageDrawable(context.getDrawable(R.drawable.heart_50));
+                } else {
+                    clicked[0] = true;
+                    holder.btnLike.setImageResource(R.drawable.ic_heart_outline_grey);
+                }
+            }
+        });
+
+
 
         holder.btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +116,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
             imageViewNews = itemView.findViewById(R.id.imageViewNews);
 
             textSwitcher = itemView.findViewById(R.id.tsLikesCounter);
+        }
+
+        public   class News{
+            public int likesCount;
+            public boolean isLiked;
+
+            public News(int likesCount, boolean isLiked) {
+                this.likesCount = likesCount;
+                this.isLiked = isLiked;
+            }
         }
     }
 }
