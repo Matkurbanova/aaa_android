@@ -12,13 +12,16 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
 import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.R;
+import kg.itrun.android.aaa.ValidationException;
 
 public class AuthorizationFragment extends AppFragment implements View.OnClickListener {
 
+    private View view;
     private ImageView imageViewLogo;
     private TextView remember, registr;
     private EditText editTextNamber, editTextPassword;
@@ -27,7 +30,7 @@ public class AuthorizationFragment extends AppFragment implements View.OnClickLi
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.authorization_fragment, container, false);
+        view = LayoutInflater.from(getContext()).inflate(R.layout.authorization_fragment, container, false);
         initViews(view);
         return view;
 
@@ -47,33 +50,59 @@ public class AuthorizationFragment extends AppFragment implements View.OnClickLi
 
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.buttonOk:
-                buttonSignIn.setEnabled(false);
-                String login = editTextNamber.getText().toString();
-                String password = editTextPassword.getText().toString();
-                if (login.isEmpty()) {
-                    editTextNamber.setError("Введите номер");
-                    return;
+                try {
+                    validate(editTextNamber, AppStatics.Rgxs.PHONE_NUMBER, R.string.put_number);
+                    validate(editTextPassword, AppStatics.Rgxs.PASSWORD, R.string.wrong_format);
 
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(AppStatics.ACTION, AppStatics.PAYMENT);
+                    listener.onAction(bundle);
+                } catch (ValidationException ex) {
+                    EditText editText = this.view.findViewById(ex.getViewId());
+                    editText.setError(ex.getMessage());
                 }
-                if (password.isEmpty()) {
-                    editTextPassword.setError("Введите пароль");
-                    return;
-
-                }
-
-                Bundle bundle1 = new Bundle();
-                bundle1.putInt(AppStatics.ACTION, AppStatics.PAYMENT);
-                listener.onAction(bundle1);
                 break;
             case R.id.textViewRegistr:
                 Bundle bundle = new Bundle();
                 bundle.putInt(AppStatics.ACTION, AppStatics.REGISTRATION);
                 listener.onAction(bundle);
                 break;
+
+
         }
     }
+
+    private void validate(EditText editText, String regex, @StringRes int res)
+            throws ValidationException {
+        validate(editText.getText().toString(), regex, getString(res), editText.getId());
+    }
+
+    private void validate(EditText editText, String regex, String errorMessage)
+            throws ValidationException {
+        validate(editText.getText().toString(), regex, errorMessage, editText.getId());
+    }
+
+    /**
+     * Validates EditText fields
+     *
+     * @param text         - string that must be validate
+     * @param regex        - regular expression
+     * @param errorMessage - error message if not valid
+     * @param viewId       - view id to identify exception
+     * @throws ValidationException
+     */
+    private void validate(String text, String regex, String errorMessage, int viewId)
+            throws ValidationException {
+        if (text == null || text.isEmpty())
+            throw new ValidationException(viewId, errorMessage);
+
+        if (regex != null && !text.matches(regex))
+            throw new ValidationException(viewId, getString(R.string.wrong_format));
+    }
+
 }
+
 
