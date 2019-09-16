@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ public class PersonalFragment extends Fragment implements View.OnClickListener {
     private EditText editName, editSrName, Namber, DpNamber, Password;
     private EditText editTextEmail;
     private TextView textViewDateRoj, textViewPol;
+    private RadioButton radioButton1, radioButton2;
 
     @Nullable
     @Override
@@ -44,6 +46,8 @@ public class PersonalFragment extends Fragment implements View.OnClickListener {
         BonusSum = v.findViewById(R.id.bonusSum);
         SkidkiSum = v.findViewById(R.id.SkidkiSum);
         buttonEdit = v.findViewById(R.id.btnEdit);
+        radioButton1=v.findViewById(R.id.radioButton1);
+        radioButton2=v.findViewById(R.id.radioButton2);
         buttonEdit.setOnClickListener(this);
         layoutUserData = v.findViewById(R.id.layoutUserData);
         layoutUserData.setVisibility(View.GONE);

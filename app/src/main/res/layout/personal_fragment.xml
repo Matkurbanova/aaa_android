@@ -103,8 +103,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnEdit">
 
@@ -160,7 +161,7 @@
                 android:ems="10"
                 android:hint="Email"
                 android:inputType="textPersonName"
-                app:layout_constraintTop_toBottomOf="@+id/textViewPol"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup5"
                 tools:layout_editor_absoluteX="0dp" />
 
             <EditText
@@ -175,6 +176,35 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
                 app:layout_constraintVertical_bias="0.07999998" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup5"
+                android:layout_width="221dp"
+                android:layout_height="55dp"
+                app:layout_constraintEnd_toStartOf="@+id/EditeName"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPol">
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="150dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Мужской"
+                    android:textColor="@color/browser_actions_title_color"
+                    android:textSize="12dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Женский"
+                    android:textColor="@color/browser_actions_title_color"
+                    android:textSize="12dp" />
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/textViewPol"
