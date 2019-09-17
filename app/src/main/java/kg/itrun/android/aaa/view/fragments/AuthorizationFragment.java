@@ -18,9 +18,11 @@ import androidx.fragment.app.Fragment;
 import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.ValidationException;
+import kg.itrun.android.aaa.utils.Validator;
 
 public class AuthorizationFragment extends AppFragment implements View.OnClickListener {
 
+    private Validator validator;
     private View view;
     private ImageView imageViewLogo;
     private TextView remember, registr;
@@ -32,6 +34,7 @@ public class AuthorizationFragment extends AppFragment implements View.OnClickLi
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = LayoutInflater.from(getContext()).inflate(R.layout.authorization_fragment, container, false);
         initViews(view);
+        validator = new Validator(getContext());
         return view;
 
     }
@@ -54,8 +57,8 @@ public class AuthorizationFragment extends AppFragment implements View.OnClickLi
         switch (v.getId()) {
             case R.id.buttonOk:
                 try {
-                    validate(editTextNamber, AppStatics.Rgxs.PHONE_NUMBER, R.string.put_number);
-                    validate(editTextPassword, AppStatics.Rgxs.PASSWORD, R.string.wrong_format);
+                    validator.validate(editTextNamber, AppStatics.Rgxs.PHONE_NUMBER, R.string.put_number);
+                    validator.validate(editTextPassword, AppStatics.Rgxs.PASSWORD, R.string.wrong_format);
 
                     Bundle bundle = new Bundle();
                     bundle.putInt(AppStatics.ACTION, AppStatics.PAYMENT);
@@ -74,35 +77,4 @@ public class AuthorizationFragment extends AppFragment implements View.OnClickLi
 
         }
     }
-
-    private void validate(EditText editText, String regex, @StringRes int res)
-            throws ValidationException {
-        validate(editText.getText().toString(), regex, getString(res), editText.getId());
-    }
-
-    private void validate(EditText editText, String regex, String errorMessage)
-            throws ValidationException {
-        validate(editText.getText().toString(), regex, errorMessage, editText.getId());
-    }
-
-    /**
-     * Validates EditText fields
-     *
-     * @param text         - string that must be validate
-     * @param regex        - regular expression
-     * @param errorMessage - error message if not valid
-     * @param viewId       - view id to identify exception
-     * @throws ValidationException
-     */
-    private void validate(String text, String regex, String errorMessage, int viewId)
-            throws ValidationException {
-        if (text == null || text.isEmpty())
-            throw new ValidationException(viewId, errorMessage);
-
-        if (regex != null && !text.matches(regex))
-            throw new ValidationException(viewId, getString(R.string.wrong_format));
-    }
-
 }
-
-

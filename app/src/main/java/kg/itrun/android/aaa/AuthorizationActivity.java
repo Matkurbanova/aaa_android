@@ -1,10 +1,8 @@
 package kg.itrun.android.aaa;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -13,7 +11,6 @@ import kg.itrun.android.aaa.view.fragments.AuthorizationFragment;
 import kg.itrun.android.aaa.view.fragments.BasketFragment;
 import kg.itrun.android.aaa.view.fragments.CodeFragment;
 import kg.itrun.android.aaa.view.fragments.FragmentListener;
-import kg.itrun.android.aaa.view.fragments.PaymentFragment;
 import kg.itrun.android.aaa.view.fragments.RegistrationFragment;
 
 

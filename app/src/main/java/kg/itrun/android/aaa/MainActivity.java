@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import kg.itrun.android.aaa.data.Category;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity
 
     private Toolbar toolbar;
     private Fragment currentFragment;
+    private FloatingActionButton fabShoppingCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,8 @@ public class MainActivity extends AppCompatActivity
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        fabShoppingCart = findViewById(R.id.fabShoppingCart);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -71,7 +75,16 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+                finish();
+            } else {
+                showFragment(ProductsFragment.class);
+            }
+//            super.onBackPressed();
+//            if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+//                getSupportFragmentManager().popBackStack();
+//            else
+//                finish();
         }
     }
 
@@ -114,7 +127,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_chat:
                 toolbar.setTitle(R.string.menu_chat);
                 System.out.println("CHAT");
-                showFragment(AuthorizationFragment.class);
+                showFragment(SupportFragment.class);
                 break;
 
         }
@@ -122,7 +135,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
     private void showFragment(Class fragmentClass, String tag, Bundle bundle) {
         try {
@@ -134,6 +146,11 @@ public class MainActivity extends AppCompatActivity
             transaction.commit();
 
             currentFragment = fragment;
+            if (fragment instanceof SupportFragment) {
+                fabShoppingCart.setVisibility(View.GONE);
+            } else {
+                fabShoppingCart.setVisibility(View.VISIBLE);
+            }
         } catch (IllegalAccessException | InstantiationException ex) {
             ex.printStackTrace();
         }
@@ -144,7 +161,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void showFragment(Class fragmentClass) {
-        showFragment(fragmentClass, null);
+        if (currentFragment != null)
+            showFragment(fragmentClass, currentFragment.getTag());
+        else
+            showFragment(fragmentClass, null);
     }
 
     @Override

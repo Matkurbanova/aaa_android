@@ -2,7 +2,6 @@ package kg.itrun.android.aaa.data;
 
 public class News {
     public News() {
-
     }
 
     public News(String text) {
@@ -16,26 +15,47 @@ public class News {
     private int likes;
     private boolean isLiked;
 
+    public void incrementLikes() {
+        likes++;
+    }
+
+    public void decrementLikes() {
+        if (likes > 0) {
+            likes--;
+        }
+    }
+
     public boolean isLiked() {
         return isLiked;
+    }
+
+    public void switchLike() {
+        if (isLiked) {
+            decrementLikes();
+        } else {
+            incrementLikes();
+        }
+        isLiked = !isLiked;
     }
 
     public void setLiked(boolean liked) {
         isLiked = liked;
     }
 
-    public int getLikes(){
+    public int getLikes() {
         return likes;
     }
-    public void setLikes(int likes){
-        this.likes=likes;
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 
-    public String getLinks(){
+    public String getLinks() {
         return links;
     }
-    public void setLinks(String links){
-        this.links=links;
+
+    public void setLinks(String links) {
+        this.links = links;
     }
 
     public String getImage() {
@@ -58,7 +78,7 @@ public class News {
         return icon;
     }
 
-    public void setIcon(String  icon) {
+    public void setIcon(String icon) {
         this.icon = icon;
     }
 }

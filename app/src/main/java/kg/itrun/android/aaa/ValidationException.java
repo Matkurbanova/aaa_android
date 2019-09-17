@@ -6,6 +6,7 @@ package kg.itrun.android.aaa;
  */
 public class ValidationException extends Exception {
     private int viewId;
+    private int stringMessageId;
 
     public ValidationException() {
     }
