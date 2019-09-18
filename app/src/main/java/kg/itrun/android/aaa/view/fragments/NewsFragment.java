@@ -15,10 +15,11 @@ import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.adapters.NewsAdapter;
 
-public class NewsFragment extends Fragment {
+public class NewsFragment extends AppFragment {
 
     private RecyclerView recyclerViewNews;
     private NewsAdapter newsAdapter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class NewsFragment extends Fragment {
         return view;
 
     }
+
     private void initViews(View view) {
         recyclerViewNews = view.findViewById(R.id.news_recycler);
         newsAdapter = new NewsAdapter(getContext());

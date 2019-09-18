@@ -16,7 +16,7 @@ import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.data.Message;
 
-public class SupportFragment extends Fragment {
+public class SupportFragment extends AppFragment {
 
     private MessagesList messagesList;
     private MessagesListAdapter<Message> listAdapter;

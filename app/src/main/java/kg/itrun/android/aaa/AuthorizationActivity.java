@@ -14,9 +14,7 @@ import kg.itrun.android.aaa.view.fragments.FragmentListener;
 import kg.itrun.android.aaa.view.fragments.RegistrationFragment;
 
 
-public class AuthorizationActivity extends AppCompatActivity
-        implements FragmentListener {
-
+public class AuthorizationActivity extends AppActivity {
 
     private Fragment currentFragment;
 

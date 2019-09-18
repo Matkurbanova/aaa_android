@@ -22,7 +22,7 @@ import kg.itrun.android.aaa.data.Favorite;
 import kg.itrun.android.aaa.view.models.BasketViewModel;
 import kg.itrun.android.aaa.view.models.FavoriteViewModel;
 
-public class FavoriteFragment extends Fragment
+public class FavoriteFragment extends AppFragment
         implements FavoriteAdapter.FavoriteAdapterListener {
 
     private RecyclerView recyclerViewFavorite;

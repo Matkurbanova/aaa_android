@@ -1,6 +1,5 @@
 package kg.itrun.android.aaa.view.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,28 +7,20 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.adapters.CategoriesAdapter;
 import kg.itrun.android.aaa.data.Category;
 
-public class CategoryFragment extends Fragment
+public class CategoryFragment extends AppFragment
         implements CategoriesAdapter.CategoryListener {
 
     private RecyclerView recyclerViewCategories;
     private CategoriesAdapter categoriesAdapter;
-    private CategoryFragmentListener listener;
-
-    @Override
-    public void onAttach(Context context) {
-        if (context instanceof CategoryFragmentListener)
-            listener = (CategoryFragmentListener) context;
-        super.onAttach(context);
-    }
 
     @Nullable
     @Override
@@ -51,11 +42,9 @@ public class CategoryFragment extends Fragment
 
     @Override
     public void onCategoryClick(Category category) {
-        if (listener != null)
-            listener.onCategoryClick(category);
-    }
-
-    public interface CategoryFragmentListener extends CategoriesAdapter.CategoryListener {
-
+        Bundle bundle = new Bundle();
+        bundle.putInt(AppStatics.ACTION, AppStatics.CATEGORY_SELECTED);
+        bundle.putSerializable(AppStatics.CATEGORY, category);
+        notifyFragmentListener(bundle);
     }
 }

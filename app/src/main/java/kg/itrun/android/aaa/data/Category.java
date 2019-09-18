@@ -5,9 +5,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.Serializable;
+
 import kg.itrun.android.aaa.R;
 
-public class Category extends AppCompatActivity implements View.OnClickListener {
+public class Category extends AppCompatActivity implements View.OnClickListener, Serializable {
 
     public Category() {
 
@@ -40,7 +42,8 @@ public class Category extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View view) {
 
-            switch (view.getId()){
+        switch (view.getId()) {
 
-            }}
+        }
+    }
 }
