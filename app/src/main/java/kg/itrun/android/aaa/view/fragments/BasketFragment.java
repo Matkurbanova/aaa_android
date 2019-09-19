@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.adapters.BasketAdapter;
 import kg.itrun.android.aaa.data.Basket;
@@ -28,10 +29,9 @@ import kg.itrun.android.aaa.view.models.BasketViewModel;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BasketFragment extends Fragment {
+public class BasketFragment extends AppFragment {
 
     private BasketViewModel viewModel;
-    private BasketFragmentListener basketFragmentListener;
 
     private RecyclerView recyclerView;
     private BasketAdapter basketAdapter;
@@ -48,13 +48,6 @@ public class BasketFragment extends Fragment {
     };
 
     public BasketFragment() {
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        if (context instanceof BasketFragmentListener)
-            basketFragmentListener = (BasketFragmentListener) context;
-        super.onAttach(context);
     }
 
     @Override
@@ -75,12 +68,7 @@ public class BasketFragment extends Fragment {
     public void initRecyclerView(View v) {
         recyclerView = v.findViewById(R.id.basketRecycler);
         basketAdapter = new BasketAdapter(getContext());
-        basketAdapter.setListener(new BasketAdapter.BasketListener() {
-            @Override
-            public void update() {
-                math();
-            }
-        });
+        basketAdapter.setListener(() -> math());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(basketAdapter);
     }
@@ -90,12 +78,7 @@ public class BasketFragment extends Fragment {
         textViewSum = vi.findViewById(R.id.textViewSumText);
         textViewTotal = vi.findViewById(R.id.textViewTotal);
         buttonBuy = vi.findViewById(R.id.buttonBuy);
-        buttonBuy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                basketFragmentListener.onPayClick();
-            }
-        });
+        buttonBuy.setOnClickListener(view -> notifyFragmentListener(AppStatics.PAY_CLICKED));
     }
 
     public void math() {
@@ -103,9 +86,4 @@ public class BasketFragment extends Fragment {
         textViewSum.setText(String.valueOf(sum));
         textViewTotal.setText(String.valueOf(sum + 160));
     }
-
-    public interface BasketFragmentListener {
-        void onPayClick();
-    }
-
 }

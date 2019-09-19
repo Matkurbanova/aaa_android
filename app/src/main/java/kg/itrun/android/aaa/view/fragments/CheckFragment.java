@@ -10,11 +10,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.R;
 
-public class CheckFragment extends Fragment {
+public class CheckFragment extends AppFragment {
     private CheckFragment chekFragment;
     private RecyclerView recyclerView;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -22,7 +24,8 @@ public class CheckFragment extends Fragment {
         initViews(view);
         return view;
     }
-    private void initViews( View view){
+
+    private void initViews(View view) {
 
     }
 

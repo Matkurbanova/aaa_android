@@ -13,8 +13,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.fragment.app.Fragment;
 
 import com.facebook.login.widget.LoginButton;
 
@@ -80,9 +78,7 @@ public class RegistrationFragment extends AppFragment
                     validator.validateEquals(editTextPassword, editTextConfirmPassword,
                             R.string.passwords_not_maches);
 
-                    Bundle bundle = new Bundle();
-                    bundle.putInt(AppStatics.ACTION, AppStatics.CODE);
-                    listener.onAction(bundle);
+                    notifyFragmentListener(AppStatics.CODE);
                 } catch (ValidationException ex) {
                     EditText editText = this.view.findViewById(ex.getViewId());
                     editText.setError(ex.getMessage());

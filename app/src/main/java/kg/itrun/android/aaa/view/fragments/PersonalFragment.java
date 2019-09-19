@@ -15,19 +15,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Objects;
 
 import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.ValidationException;
 import kg.itrun.android.aaa.utils.Validator;
 
-public class PersonalFragment extends Fragment
+public class PersonalFragment extends AppFragment
         implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
     private DatePickerDialog datePickerDialog;

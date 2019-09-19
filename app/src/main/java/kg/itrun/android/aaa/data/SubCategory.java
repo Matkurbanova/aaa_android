@@ -1,6 +1,8 @@
 package kg.itrun.android.aaa.data;
 
-public class SubCategory {
+import java.io.Serializable;
+
+public class SubCategory implements Serializable {
     public SubCategory() {
 
     }

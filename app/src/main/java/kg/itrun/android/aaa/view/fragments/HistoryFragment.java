@@ -13,20 +13,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.adapters.PromoAdapter;
 
-public class HistoryFragment extends Fragment {
+public class HistoryFragment extends AppFragment {
 
-        private RecyclerView recyclerViewPromo;
-        private PromoAdapter promoAdapter;
+    private RecyclerView recyclerViewPromo;
+    private PromoAdapter promoAdapter;
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.history_fragment, container, false);
+        initViews(view);
+        return view;
+    }
 
-        @Nullable
-        @Override
-        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = LayoutInflater.from(getContext()).inflate(R.layout.history_fragment, container, false);
-            initViews(view);
-            return view;
-        }
-
-    private void initViews( View view){
+    private void initViews(View view) {
     }
 }

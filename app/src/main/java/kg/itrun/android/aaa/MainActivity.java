@@ -7,43 +7,28 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.*;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
-import kg.itrun.android.aaa.data.Category;
-import kg.itrun.android.aaa.data.Product;
-import kg.itrun.android.aaa.data.SubCategory;
-import kg.itrun.android.aaa.view.fragments.AuthorizationFragment;
+import kg.itrun.android.aaa.data.*;
 import kg.itrun.android.aaa.view.fragments.BasketFragment;
 import kg.itrun.android.aaa.view.fragments.CategoryFragment;
 import kg.itrun.android.aaa.view.fragments.FavoriteFragment;
-import kg.itrun.android.aaa.view.fragments.HistoryFragment;
 import kg.itrun.android.aaa.view.fragments.NewsFragment;
-import kg.itrun.android.aaa.view.fragments.PaymentFragment;
 import kg.itrun.android.aaa.view.fragments.PersonalFragment;
 import kg.itrun.android.aaa.view.fragments.ProductFragment;
 import kg.itrun.android.aaa.view.fragments.ProductsFragment;
 import kg.itrun.android.aaa.view.fragments.PromoFragment;
-import kg.itrun.android.aaa.view.fragments.RegistrationFragment;
 import kg.itrun.android.aaa.view.fragments.SubCategoryFragment;
 import kg.itrun.android.aaa.view.fragments.SupportFragment;
 
-public class MainActivity extends AppCompatActivity
-        implements
-        NavigationView.OnNavigationItemSelectedListener,
-        SubCategoryFragment.SubCategoryFragmentListener,
-        View.OnClickListener,
-        CategoryFragment.CategoryFragmentListener,
-        ProductsFragment.ProductsFragmentListener,
-        BasketFragment.BasketFragmentListener {
+public class MainActivity extends AppActivity implements
+        NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private Toolbar toolbar;
     private Fragment currentFragment;
@@ -122,7 +107,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_purchase_history:
                 toolbar.setTitle(R.string.menu_purchase_history);
                 System.out.println("PURCHASE HISTORY");
-                showFragment(RegistrationFragment.class);
+                startAuthorization(AppStatics.REGISTRATION);
                 break;
             case R.id.nav_chat:
                 toolbar.setTitle(R.string.menu_chat);
@@ -167,8 +152,7 @@ public class MainActivity extends AppCompatActivity
             showFragment(fragmentClass, null);
     }
 
-    @Override
-    public void onCategoryClick(Category category) {
+    public void onCategorySelected(Category category) {
         toolbar.setTitle(category.getName());
         if (currentFragment != null)
             showFragment(SubCategoryFragment.class, currentFragment.getTag());
@@ -176,8 +160,7 @@ public class MainActivity extends AppCompatActivity
             showFragment(SubCategoryFragment.class);
     }
 
-    @Override
-    public void onSubCategorySelect(SubCategory subCategory) {
+    public void onSubCategorySelected(SubCategory subCategory) {
         toolbar.setTitle(subCategory.getName());
         if (currentFragment != null)
             showFragment(ProductsFragment.class, currentFragment.getTag());
@@ -185,10 +168,10 @@ public class MainActivity extends AppCompatActivity
             showFragment(ProductsFragment.class);
     }
 
-    @Override
-    public void onPayClick() {
+
+    private void startAuthorization(int action) {
         Intent intent = new Intent(this, AuthorizationActivity.class);
-        intent.putExtra(AppStatics.ACTION, AppStatics.LOGIN);
+        intent.putExtra(AppStatics.ACTION, action);
         startActivity(intent);
     }
 
@@ -205,10 +188,31 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
     public void onProductSelect(Product product) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(AppStatics.PRODUCT, product);
         showFragment(ProductFragment.class, currentFragment.getTag(), bundle);
+    }
+
+    @Override
+    public void onAction(Bundle bundle) {
+        int action = bundle.getInt(AppStatics.ACTION);
+        switch (action) {
+            case AppStatics.CATEGORY_SELECTED:
+                Category category = (Category) bundle.get(AppStatics.CATEGORY);
+                onCategorySelected(category);
+                break;
+            case AppStatics.SUBCATEGORY_SELECTED:
+                SubCategory subCategory = (SubCategory) bundle.get(AppStatics.CATEGORY);
+                onSubCategorySelected(subCategory);
+                break;
+            case AppStatics.PRODUCT_SELECTED:
+                Product product = (Product) bundle.get(AppStatics.PRODUCT);
+                onProductSelect(product);
+                break;
+            case AppStatics.PAY_CLICKED:
+                startAuthorization(AppStatics.LOGIN);
+                break;
+        }
     }
 }

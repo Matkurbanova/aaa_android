@@ -36,7 +36,6 @@ public class AuthorizationFragment extends AppFragment implements View.OnClickLi
         initViews(view);
         validator = new Validator(getContext());
         return view;
-
     }
 
     private void initViews(View v) {

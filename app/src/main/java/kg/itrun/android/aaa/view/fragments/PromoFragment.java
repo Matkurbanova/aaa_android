@@ -1,26 +1,21 @@
 package kg.itrun.android.aaa.view.fragments;
 
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
-import kg.itrun.android.aaa.adapters.CategoriesAdapter;
 import kg.itrun.android.aaa.adapters.PromoAdapter;
-import kg.itrun.android.aaa.data.Category;
 
 
-public class PromoFragment extends Fragment {
+public class PromoFragment extends AppFragment {
 
     private RecyclerView recyclerViewPromo;
     private PromoAdapter promoAdapter;

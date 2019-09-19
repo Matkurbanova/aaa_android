@@ -14,7 +14,7 @@ import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.data.Product;
 
-public class ProductFragment extends Fragment {
+public class ProductFragment extends AppFragment {
 
     private TextView textViewTitle;
 

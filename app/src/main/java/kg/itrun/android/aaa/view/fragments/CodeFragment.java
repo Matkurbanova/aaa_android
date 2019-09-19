@@ -46,10 +46,7 @@ public class CodeFragment extends AppFragment
             case R.id.backToLoginBtn:
             case R.id.sumbit:
 
-
                 break;
-
-
         }
 
     }

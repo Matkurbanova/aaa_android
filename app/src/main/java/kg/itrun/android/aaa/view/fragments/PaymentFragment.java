@@ -17,11 +17,12 @@ import kg.itrun.android.aaa.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PaymentFragment extends Fragment {
+public class PaymentFragment extends AppFragment {
 
-    private EditText editTextName, editTextPhone,editTextAddress,editTextAdditionalInfo, editTextDoorCode;
+    private EditText editTextName, editTextPhone, editTextAddress, editTextAdditionalInfo, editTextDoorCode;
     private Button buttonToOrder;
     private RadioButton buttonCart, buttonCash;
+
     public PaymentFragment() {
 
     }
@@ -34,7 +35,8 @@ public class PaymentFragment extends Fragment {
         initView(view);
         return view;
     }
-    public void initView(View v){
+
+    public void initView(View v) {
         editTextName = v.findViewById(R.id.editTextNamePayment);
         editTextPhone = v.findViewById(R.id.editTextPhonePayment);
         editTextAddress = v.findViewById(R.id.editTextAddressPayment);
