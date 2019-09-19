@@ -37,7 +37,7 @@ public class PersonalFragment extends Fragment
     private ImageView imageViewAvatar;
     private TextView name;
     private TextView Bonus, Skidki, BonusSum, SkidkiSum;
-    private Button buttonEdit, buttonSave;
+    private Button buttonEdit, buttonSave1;
     private ConstraintLayout layoutUserData;
     private EditText editName, editSrName, Namber, DpNamber, Password;
     private EditText editTextEmail;
@@ -65,17 +65,23 @@ public class PersonalFragment extends Fragment
         radioButton1 = v.findViewById(R.id.radioButton1);
         radioButton2 = v.findViewById(R.id.radioButton2);
         buttonEdit.setOnClickListener(this);
+        editName = v.findViewById(R.id.EditeName);
+        editSrName = v.findViewById(R.id.editefsname);
+        editTextEmail = v.findViewById(R.id.editTextEmail);
+        DpNamber = v.findViewById(R.id.editDopNom);
+        Password = v.findViewById(R.id.editTextPassword);
+        Namber = v.findViewById(R.id.editTextNamber);
         layoutUserData = v.findViewById(R.id.layoutUserData);
         layoutUserData.setVisibility(View.GONE);
-        buttonSave = v.findViewById(R.id.buttonSave);
+        buttonSave1 = v.findViewById(R.id.buttonSave);
         textViewBirthDate = v.findViewById(R.id.textViewDR);
         textViewBirthDate.setOnClickListener(this);
-        buttonSave.setOnClickListener(this);
+        buttonSave1.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        switch (view.getId()) {
+        switch (v.getId()) {
             case R.id.btnEdit:
                 if (layoutUserData.getVisibility() != View.VISIBLE)
                     layoutUserData.setVisibility(View.VISIBLE);
@@ -101,7 +107,6 @@ public class PersonalFragment extends Fragment
                     validator.validate(editName, null, R.string.put_name);
                     validator.validate(Namber, AppStatics.Rgxs.PHONE_NUMBER, R.string.put_number);
                     validator.validate(Password, AppStatics.Rgxs.PASSWORD, R.string.wrong_format);
-
 
                 } catch (ValidationException ex) {
                     EditText editText = this.view.findViewById(ex.getViewId());
