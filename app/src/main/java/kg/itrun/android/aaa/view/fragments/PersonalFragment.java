@@ -44,7 +44,7 @@ public class PersonalFragment extends AppFragment
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.personal_fragment, container, false);
+        view = LayoutInflater.from(getContext()).inflate(R.layout.personal_fragment, container, false);
         initViews(view);
         validator = new Validator(getContext());
         return view;
