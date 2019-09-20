@@ -31,8 +31,8 @@ public class PersonalFragment extends AppFragment
     private Validator validator;
     private View view;
 
-    private ImageView imageViewAvatar;
-    private TextView name;
+    private ImageView imageViewAvatar, imageViewFoncard,imageViewLogo;
+    private TextView name, textViewNameCard, textViewCodeCard;
     private TextView Bonus, Skidki, BonusSum, SkidkiSum;
     private Button buttonEdit, buttonSave1;
     private ConstraintLayout layoutUserData;
@@ -66,11 +66,15 @@ public class PersonalFragment extends AppFragment
         editSrName = v.findViewById(R.id.editefsname);
         editTextEmail = v.findViewById(R.id.editTextEmail);
         DpNamber = v.findViewById(R.id.editDopNom);
-        Password = v.findViewById(R.id.editTextPassword);
+        Password = v.findViewById(R.id.editPassword);
         Namber = v.findViewById(R.id.editTextNamber);
         layoutUserData = v.findViewById(R.id.layoutUserData);
         layoutUserData.setVisibility(View.GONE);
         buttonSave1 = v.findViewById(R.id.buttonSave);
+        imageViewFoncard=v.findViewById(R.id.imageViewFonCard);
+        imageViewLogo=v.findViewById(R.id.imageViewLogo);
+        textViewNameCard=v.findViewById(R.id.textViewCardName);
+        textViewCodeCard=v.findViewById(R.id.textViewcardCode);
         textViewBirthDate = v.findViewById(R.id.textViewDR);
         textViewBirthDate.setOnClickListener(this);
         buttonSave1.setOnClickListener(this);
@@ -105,12 +109,20 @@ public class PersonalFragment extends AppFragment
                     validator.validate(Namber, AppStatics.Rgxs.PHONE_NUMBER, R.string.put_number);
                     validator.validate(Password, AppStatics.Rgxs.PASSWORD, R.string.wrong_format);
 
+
+                    if (layoutUserData.getVisibility() != View.VISIBLE)
+                        layoutUserData.setVisibility(View.VISIBLE);
+                    else
+                        layoutUserData.setVisibility(View.GONE);
+                    break;
+
+
                 } catch (ValidationException ex) {
                     EditText editText = this.view.findViewById(ex.getViewId());
                     editText.setError(ex.getMessage());
-                }
-                break;
-        }
+
+
+        }}
     }
 
 

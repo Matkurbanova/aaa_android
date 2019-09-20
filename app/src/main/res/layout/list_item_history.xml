@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewcardCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/all_sum"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/textViewcardCode"
+        app:layout_constraintTop_toBottomOf="@+id/textViewcardCode" />
 
     <TextView
         android:id="@+id/textViewDate"
@@ -42,7 +42,7 @@
         android:layout_marginEnd="8dp"
         android:text="13"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="@+id/textViewcardCode" />
 
     <TextView
         android:id="@+id/textViewSum"
