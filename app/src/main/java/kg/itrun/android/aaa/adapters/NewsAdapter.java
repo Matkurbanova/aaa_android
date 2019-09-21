@@ -3,12 +3,10 @@ package kg.itrun.android.aaa.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
@@ -16,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +26,19 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
 
     private LayoutInflater inflater;
     private Context context;
+    private NewsAdapterListener listener;
 
     public NewsAdapter(Context context) {
         inflater = LayoutInflater.from(context);
         this.context = context;
+    }
+
+    public NewsAdapterListener getListener() {
+        return listener;
+    }
+
+    public void setListener(NewsAdapterListener listener) {
+        this.listener = listener;
     }
 
     public void setNewsList(List<News> news) {
@@ -51,21 +57,18 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
 
     @Override
     public void onBindViewHolder(@NonNull NewsVH holder, int position) {
+
         final News news = newsList.get(position);
         holder.textViewText.setText(news.getText());
-        holder.textSwitcher.setText("" + news.getLikes());
-
-        if (news.isLiked()) {
-            holder.btnLike.setImageDrawable(context.getDrawable(R.drawable.heart_50));
-        }
-
-        holder.btnShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                shareNews(news.getLinks());
-            }
+        holder.updateLike(news);
+        holder.btnLike.setOnClickListener(v -> {
+            news.switchLike();
+            holder.updateLike(news);
         });
 
+        holder.textViewText.setOnClickListener(v -> listener.onNewsClick(news));
+
+        holder.btnShare.setOnClickListener(v -> shareNews(news.getLinks()));
     }
 
     @Override
@@ -95,9 +98,21 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
             btnLike = itemView.findViewById(R.id.btnLike);
             btnShare = itemView.findViewById(R.id.btnShare);
             imageViewNews = itemView.findViewById(R.id.imageViewNews);
-
             textSwitcher = itemView.findViewById(R.id.tsLikesCounter);
         }
+
+        void updateLike(News news) {
+            if (news.isLiked()) {
+                this.btnLike.setImageDrawable(context.getDrawable(R.drawable.heart_50));
+            } else {
+                this.btnLike.setImageResource(R.drawable.ic_heart_outline_grey);
+            }
+            this.textSwitcher.setText(String.valueOf(news.getLikes()));
+        }
+    }
+
+    public interface NewsAdapterListener {
+        void onNewsClick(News news);
     }
 }
 

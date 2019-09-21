@@ -19,6 +19,7 @@ import kg.itrun.android.aaa.data.*;
 import kg.itrun.android.aaa.view.fragments.BasketFragment;
 import kg.itrun.android.aaa.view.fragments.CategoryFragment;
 import kg.itrun.android.aaa.view.fragments.FavoriteFragment;
+import kg.itrun.android.aaa.view.fragments.MoreNewsFragment;
 import kg.itrun.android.aaa.view.fragments.NewsFragment;
 import kg.itrun.android.aaa.view.fragments.PersonalFragment;
 import kg.itrun.android.aaa.view.fragments.ProductFragment;
@@ -194,6 +195,7 @@ public class MainActivity extends AppActivity implements
         showFragment(ProductFragment.class, currentFragment.getTag(), bundle);
     }
 
+
     @Override
     public void onAction(Bundle bundle) {
         int action = bundle.getInt(AppStatics.ACTION);
@@ -212,6 +214,9 @@ public class MainActivity extends AppActivity implements
                 break;
             case AppStatics.PAY_CLICKED:
                 startAuthorization(AppStatics.LOGIN);
+                break;
+            case AppStatics.NEWS_CLICKED:
+                showFragment(MoreNewsFragment.class);
                 break;
         }
     }
