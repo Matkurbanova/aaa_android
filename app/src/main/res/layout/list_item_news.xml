@@ -34,6 +34,19 @@
         android:src="@drawable/heart_50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewNews" />
+    <ImageView
+        android:id="@+id/btnLikeNews"
+        android:layout_width="26dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_heart_outline_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewNews" />
+
 
     <ImageView
         android:id="@+id/btnShare"
