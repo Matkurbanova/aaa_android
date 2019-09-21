@@ -29,6 +29,7 @@ public class AppFragment extends Fragment {
             listener.onAction(bundle);
     }
 
+
     public Bundle createAction(int action) {
         Bundle bundle = new Bundle();
         bundle.putInt(AppStatics.ACTION, action);

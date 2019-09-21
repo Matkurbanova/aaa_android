@@ -26,10 +26,19 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
 
     private LayoutInflater inflater;
     private Context context;
+    private NewsAdapterListener listener;
 
     public NewsAdapter(Context context) {
         inflater = LayoutInflater.from(context);
         this.context = context;
+    }
+
+    public NewsAdapterListener getListener() {
+        return listener;
+    }
+
+    public void setListener(NewsAdapterListener listener) {
+        this.listener = listener;
     }
 
     public void setNewsList(List<News> news) {
@@ -56,6 +65,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
             news.switchLike();
             holder.updateLike(news);
         });
+
+        holder.textViewText.setOnClickListener(v -> listener.onNewsClick(news));
 
         holder.btnShare.setOnClickListener(v -> shareNews(news.getLinks()));
     }
@@ -98,6 +109,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
             }
             this.textSwitcher.setText(String.valueOf(news.getLikes()));
         }
+    }
+
+    public interface NewsAdapterListener {
+        void onNewsClick(News news);
     }
 }
 
