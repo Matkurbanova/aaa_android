@@ -85,6 +85,12 @@ public class DataGen {
 
     };
 
+    public static String[] jpgUrls = new String[]{
+            "https://shop.coles.com.au/wcsstore/Coles-CAS/images/1/9/9/1993256.jpg",
+            "https://assets.shop.loblaws.ca/products_jpeg/20175355001/en/20175355001_lrg_1_@1x.jpg",
+            "https://cdn.webshopapp.com/shops/36165/files/238126463/leonidas-box-of-chocolates-1kg-220-lb.jpg"
+    };
+
     public static Double prices[] = new Double[]
             {
                     new Double(32.5),
@@ -136,6 +142,7 @@ public class DataGen {
             new1.setLikes(random.nextInt(10000));
             new1.setLiked(random.nextBoolean());
             new1.setLinks("http://google.com");
+            new1.setImage(jpgUrls[random.nextInt(jpgUrls.length)]);
             news.add(new1);
         }
 

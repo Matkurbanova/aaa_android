@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.R;
+import kg.itrun.android.aaa.data.News;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,8 +34,13 @@ public class MoreNewsFragment extends AppFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.more_news_fragment, container, false);
-
         initView(view);
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            News news = (News) bundle.getSerializable(AppStatics.NEWS);
+            initNews(news);
+        }
         return view;
     }
 
@@ -43,11 +50,14 @@ public class MoreNewsFragment extends AppFragment {
         btnShare = v.findViewById(R.id.btnShare);
         textViewText = v.findViewById(R.id.textViewText);
         textSwitcher = v.findViewById(R.id.tsLikesCounter);
-
-
     }
 
-
+    private void initNews(News news) {
+        if (news != null) {
+            textViewText.setText(news.getText());
+            textSwitcher.setText(String.valueOf(news.getLikes()));
+        }
+    }
 }
 
 

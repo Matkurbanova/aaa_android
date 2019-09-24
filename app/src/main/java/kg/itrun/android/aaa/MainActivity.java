@@ -1,5 +1,7 @@
 package kg.itrun.android.aaa;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,18 +9,22 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.*;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
-import kg.itrun.android.aaa.data.*;
+import kg.itrun.android.aaa.data.Category;
+import kg.itrun.android.aaa.data.Product;
+import kg.itrun.android.aaa.data.SubCategory;
 import kg.itrun.android.aaa.view.fragments.BasketFragment;
 import kg.itrun.android.aaa.view.fragments.CategoryFragment;
 import kg.itrun.android.aaa.view.fragments.FavoriteFragment;
+import kg.itrun.android.aaa.view.fragments.HistoryFragment;
 import kg.itrun.android.aaa.view.fragments.MoreNewsFragment;
 import kg.itrun.android.aaa.view.fragments.NewsFragment;
 import kg.itrun.android.aaa.view.fragments.PersonalFragment;
@@ -29,11 +35,15 @@ import kg.itrun.android.aaa.view.fragments.SubCategoryFragment;
 import kg.itrun.android.aaa.view.fragments.SupportFragment;
 
 public class MainActivity extends AppActivity implements
-        NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+        NavigationView.OnNavigationItemSelectedListener,
+        View.OnClickListener {
 
     private Toolbar toolbar;
-    private Fragment currentFragment;
     private FloatingActionButton fabShoppingCart;
+
+    public MainActivity() {
+        super(R.id.frame_layout);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,23 +70,34 @@ public class MainActivity extends AppActivity implements
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
-                finish();
-            } else {
-                showFragment(ProductsFragment.class);
-            }
-//            super.onBackPressed();
-//            if (getSupportFragmentManager().getBackStackEntryCount() > 0)
-//                getSupportFragmentManager().popBackStack();
-//            else
-//                finish();
+            return;
         }
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0)
+            showFragment(ProductsFragment.class);
+        else
+            super.onBackPressed();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return getCurrentFragment().onSearch(query);
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
         return true;
     }
 
@@ -108,7 +129,7 @@ public class MainActivity extends AppActivity implements
             case R.id.nav_purchase_history:
                 toolbar.setTitle(R.string.menu_purchase_history);
                 System.out.println("PURCHASE HISTORY");
-                startAuthorization(AppStatics.REGISTRATION);
+                showFragment(HistoryFragment.class);
                 break;
             case R.id.nav_chat:
                 toolbar.setTitle(R.string.menu_chat);
@@ -122,49 +143,18 @@ public class MainActivity extends AppActivity implements
         return true;
     }
 
-    private void showFragment(Class fragmentClass, String tag, Bundle bundle) {
-        try {
-            Fragment fragment = (Fragment) fragmentClass.newInstance();
-            fragment.setArguments(bundle);
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment);
-            transaction.addToBackStack(tag);
-            transaction.commit();
-
-            currentFragment = fragment;
-            if (fragment instanceof SupportFragment) {
-                fabShoppingCart.setVisibility(View.GONE);
-            } else {
-                fabShoppingCart.setVisibility(View.VISIBLE);
-            }
-        } catch (IllegalAccessException | InstantiationException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    private void showFragment(Class fragmentClass, String tag) {
-        showFragment(fragmentClass, tag, null);
-    }
-
-    private void showFragment(Class fragmentClass) {
-        if (currentFragment != null)
-            showFragment(fragmentClass, currentFragment.getTag());
-        else
-            showFragment(fragmentClass, null);
-    }
-
     public void onCategorySelected(Category category) {
         toolbar.setTitle(category.getName());
-        if (currentFragment != null)
-            showFragment(SubCategoryFragment.class, currentFragment.getTag());
+        if (getCurrentFragment() != null)
+            showFragment(SubCategoryFragment.class, getCurrentFragment().getTag());
         else
             showFragment(SubCategoryFragment.class);
     }
 
     public void onSubCategorySelected(SubCategory subCategory) {
         toolbar.setTitle(subCategory.getName());
-        if (currentFragment != null)
-            showFragment(ProductsFragment.class, currentFragment.getTag());
+        if (getCurrentFragment() != null)
+            showFragment(ProductsFragment.class, getCurrentFragment().getTag());
         else
             showFragment(ProductsFragment.class);
     }
@@ -180,8 +170,8 @@ public class MainActivity extends AppActivity implements
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fabShoppingCart:
-                if (currentFragment != null)
-                    showFragment(BasketFragment.class, currentFragment.getTag());
+                if (getCurrentFragment() != null)
+                    showFragment(BasketFragment.class, getCurrentFragment().getTag());
                 else
                     showFragment(BasketFragment.class);
                 toolbar.setTitle(getString(R.string.basket));
@@ -192,7 +182,7 @@ public class MainActivity extends AppActivity implements
     public void onProductSelect(Product product) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(AppStatics.PRODUCT, product);
-        showFragment(ProductFragment.class, currentFragment.getTag(), bundle);
+        showFragment(ProductFragment.class, getCurrentFragment().getTag(), bundle);
     }
 
 
@@ -216,7 +206,7 @@ public class MainActivity extends AppActivity implements
                 startAuthorization(AppStatics.LOGIN);
                 break;
             case AppStatics.NEWS_CLICKED:
-                showFragment(MoreNewsFragment.class);
+                showFragment(MoreNewsFragment.class, getCurrentFragment().getTag(), bundle);
                 break;
         }
     }

@@ -34,7 +34,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         this.listener = listener;
     }
 
-    public void setCategoriesList(List<Product> products) {
+    public void setProductsList(List<Product> products) {
         productsList.clear();
         productsList.addAll(products);
         notifyDataSetChanged();
@@ -59,6 +59,18 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
                 }
             }
         });
+    }
+
+    public void filter(String filter) {
+        List<Product> filtered = new ArrayList<>();
+        for (Product product : productsList) {
+            if (product.getName().toUpperCase()
+                    .startsWith(filter.toUpperCase()))
+                filtered.add(product);
+        }
+        productsList.clear();
+        productsList.addAll(filtered);
+        notifyDataSetChanged();
     }
 
     @Override

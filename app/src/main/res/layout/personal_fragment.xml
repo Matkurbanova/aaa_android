@@ -243,18 +243,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-                */app:srcCompat="@drawable/foncard" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/foncard"/>
 
             <ImageView
                 android:id="@+id/imageViewLogo"
-                android:layout_width="147dp"
-                android:layout_height="108dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:adjustViewBounds="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageViewFonCard"/>
-                //app:srcCompat="@drawable/logo" />
+                app:layout_constraintTop_toTopOf="@+id/imageViewFonCard"
+                app:srcCompat="@drawable/logo" />
 
             <TextView
                 android:id="@+id/textViewCardName"

@@ -33,7 +33,7 @@ public class ProductsFragment extends AppFragment
     private Observer<List<Product>> observer = new Observer<List<Product>>() {
         @Override
         public void onChanged(List<Product> products) {
-            productsAdapter.setCategoriesList(products);
+            productsAdapter.setProductsList(products);
         }
     };
 
@@ -64,5 +64,11 @@ public class ProductsFragment extends AppFragment
         Bundle bundle = createAction(AppStatics.PRODUCT_SELECTED);
         bundle.putSerializable(AppStatics.PRODUCT, product);
         notifyFragmentListener(bundle);
+    }
+
+    @Override
+    public boolean onSearch(String query) {
+        productsAdapter.filter(query);
+        return true;
     }
 }

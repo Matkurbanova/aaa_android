@@ -1,6 +1,8 @@
 package kg.itrun.android.aaa.data;
 
-public class News {
+import java.io.Serializable;
+
+public class News implements Serializable {
     public News() {
     }
 

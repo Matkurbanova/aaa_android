@@ -35,4 +35,9 @@ public class AppFragment extends Fragment {
         bundle.putInt(AppStatics.ACTION, action);
         return bundle;
     }
+
+    public boolean onSearch(String query) {
+        System.out.println(query);
+        return true;
+    }
 }

@@ -50,6 +50,7 @@ public class NewsFragment extends AppFragment
     public void onNewsClick(News news) {
         Bundle bundle = new Bundle();
         bundle.putInt(AppStatics.ACTION, AppStatics.NEWS_CLICKED);
+        bundle.putSerializable(AppStatics.NEWS, news);
         listener.onAction(bundle);
     }
 }

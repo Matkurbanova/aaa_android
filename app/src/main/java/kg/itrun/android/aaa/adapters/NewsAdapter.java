@@ -3,7 +3,6 @@ package kg.itrun.android.aaa.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +69,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
             holder.updateLike(news);
         });
 
+        Picasso.with(context)
+                .load(news.getImage())
+                .placeholder(R.drawable.news)
+                .into(holder.imageViewNews);
+
         holder.textViewText.setOnClickListener(v -> listener.onNewsClick(news));
 
         holder.btnShare.setOnClickListener(v -> shareNews(news.getLinks()));
@@ -105,10 +108,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
             imageViewNews = itemView.findViewById(R.id.imageViewNews);
 
             textSwitcher = itemView.findViewById(R.id.tsLikesCounter);
-            String url = "https://cdn.webshopapp.com/shops/36165/files/238126463/leonidas-box-of-chocolates-1kg-220-lb.jpg";
-            Picasso.with(context).load(url).into(imageViewNews);
-
-
         }
 
 
