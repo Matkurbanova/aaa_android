@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
@@ -27,6 +29,8 @@ public class NewsFragment extends AppFragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.news_fragment, container, false);
+
+
         initViews(view);
         return view;
 

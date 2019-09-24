@@ -14,6 +14,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +54,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
     @Override
     public NewsVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.list_item_news, parent, false);
+
+
         return new NewsAdapter.NewsVH(view);
 
     }
@@ -98,8 +103,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
             btnLike = itemView.findViewById(R.id.btnLike);
             btnShare = itemView.findViewById(R.id.btnShare);
             imageViewNews = itemView.findViewById(R.id.imageViewNews);
+
             textSwitcher = itemView.findViewById(R.id.tsLikesCounter);
+            String url = "https://cdn.webshopapp.com/shops/36165/files/238126463/leonidas-box-of-chocolates-1kg-220-lb.jpg";
+            Picasso.with(context).load(url).into(imageViewNews);
+
+
         }
+
 
         void updateLike(News news) {
             if (news.isLiked()) {
