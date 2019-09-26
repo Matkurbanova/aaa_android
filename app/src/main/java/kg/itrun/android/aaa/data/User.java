@@ -5,6 +5,8 @@ import com.stfalcon.chatkit.commons.models.IUser;
 public class User implements IUser {
     private String id;
     private String name;
+    private String avatar_url;
+
 
     public User() {
     }
@@ -14,6 +16,9 @@ public class User implements IUser {
         this.name = name;
     }
 
+    public void setAvatar_url(String avatar_url) {
+        this.avatar_url = avatar_url;
+    }
     @Override
     public String getId() {
         return id;
@@ -26,6 +31,6 @@ public class User implements IUser {
 
     @Override
     public String getAvatar() {
-        return null;
+        return avatar_url;
     }
 }

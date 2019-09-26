@@ -26,10 +26,10 @@ public class Repository {
         favorite.setValue(favoriteList);
     }
 
-    private MutableLiveData<List<Favorite>>favorite=new MutableLiveData<>();
-    private MutableLiveData<List<Favorite>>basketFavorite=new MutableLiveData<>();
-    private List<Favorite>basketFavoriteList = new ArrayList<>();
-    private List<Favorite>favoriteList=new ArrayList<>();
+    private MutableLiveData<List<Favorite>> favorite = new MutableLiveData<>();
+    private MutableLiveData<List<Favorite>> basketFavorite = new MutableLiveData<>();
+    private List<Favorite> basketFavoriteList = new ArrayList<>();
+    private List<Favorite> favoriteList = new ArrayList<>();
 
 
     private MutableLiveData<List<Product>> products = new MutableLiveData<>();
@@ -51,13 +51,17 @@ public class Repository {
         basketProductsList.add(product);
         basketProducts.setValue(basketProductsList);
     }
-    public MutableLiveData<List<Favorite>>getFavorite(){
+
+    public MutableLiveData<List<Favorite>> getFavorite() {
         return favorite;
     }
-public MutableLiveData<List<Favorite>>getBasketFavorite(){
+
+    public MutableLiveData<List<Favorite>> getBasketFavorite() {
         return basketFavorite;
-}
-public void addBasketFavorite(Favorite favorite){
-    basketFavoriteList.add(favorite);
-    basketFavorite.setValue(basketFavoriteList);}
+    }
+
+    public void addBasketFavorite(Favorite favorite) {
+        basketFavoriteList.add(favorite);
+        basketFavorite.setValue(basketFavoriteList);
+    }
 }

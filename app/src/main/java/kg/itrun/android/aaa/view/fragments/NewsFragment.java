@@ -64,9 +64,13 @@ public class NewsFragment extends AppFragment
         bundle.putSerializable(AppStatics.NEWS, news);
         listener.onAction(bundle);
     }
+
     @Override
     public boolean onSearch(String query) {
-        newsAdapter.filter(query);
+        if (query.isEmpty())
+            newsAdapter.setNewsList(DataGen.genNews(35));
+        else
+            newsAdapter.filter(query);
         return true;
     }
 }

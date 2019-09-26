@@ -1,6 +1,5 @@
 package kg.itrun.android.aaa.view.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +11,21 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.fragment.app.Fragment;
+
+import com.google.gson.JsonObject;
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
 
 import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.ValidationException;
+import kg.itrun.android.aaa.api.AppApi;
+import kg.itrun.android.aaa.data.User;
 import kg.itrun.android.aaa.utils.Validator;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AuthorizationFragment extends AppFragment implements View.OnClickListener {
 
@@ -26,7 +33,7 @@ public class AuthorizationFragment extends AppFragment implements View.OnClickLi
     private View view;
     private ImageView imageViewLogo;
     private TextView remember, registr;
-    private EditText editTextNamber, editTextPassword;
+    private EditText editTextNumber, editTextPassword;
     private Button buttonSignIn;
 
     @Nullable
@@ -43,7 +50,7 @@ public class AuthorizationFragment extends AppFragment implements View.OnClickLi
         remember = v.findViewById(R.id.textViewRemember);
         registr = v.findViewById(R.id.textViewRegistr);
         buttonSignIn = v.findViewById(R.id.buttonOk);
-        editTextNamber = v.findViewById(R.id.editTextEmail);
+        editTextNumber = v.findViewById(R.id.editTextEmail);
         editTextPassword = v.findViewById(R.id.editTextPassword);
 
         registr.setOnClickListener(this);
@@ -55,17 +62,40 @@ public class AuthorizationFragment extends AppFragment implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonOk:
-                try {
-                    validator.validate(editTextNamber, AppStatics.Rgxs.PHONE_NUMBER, R.string.put_number);
-                    validator.validate(editTextPassword, AppStatics.Rgxs.PASSWORD, R.string.wrong_format);
+                String login = editTextNumber.getText().toString();
+                AppApi.getUser(login, new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        if (response.isSuccessful()) {
+                            System.out.println(response.body().getName());
+                            Picasso.with(getContext())
+                                    .load(response.body().getAvatar())
+                                    .into(imageViewLogo);
+                        } else {
+                            try {
+                                System.out.println(response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
 
-                    Bundle bundle = new Bundle();
-                    bundle.putInt(AppStatics.ACTION, AppStatics.PAYMENT);
-                    listener.onAction(bundle);
-                } catch (ValidationException ex) {
-                    EditText editText = this.view.findViewById(ex.getViewId());
-                    editText.setError(ex.getMessage());
-                }
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
+//                try {
+//                    validator.validate(editTextNumber, AppStatics.Rgxs.PHONE_NUMBER, R.string.put_number);
+//                    validator.validate(editTextPassword, AppStatics.Rgxs.PASSWORD, R.string.wrong_format);
+//
+//                    Bundle bundle = new Bundle();
+//                    bundle.putInt(AppStatics.ACTION, AppStatics.PAYMENT);
+//                    listener.onAction(bundle);
+//                } catch (ValidationException ex) {
+//                    EditText editText = this.view.findViewById(ex.getViewId());
+//                    editText.setError(ex.getMessage());
+//                }
                 break;
             case R.id.textViewRegistr:
                 Bundle bundle = new Bundle();

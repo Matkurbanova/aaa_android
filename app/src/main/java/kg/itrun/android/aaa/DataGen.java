@@ -1,7 +1,5 @@
 package kg.itrun.android.aaa;
 
-import android.telephony.mbms.MbmsErrors;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -9,6 +7,7 @@ import java.util.Random;
 import kg.itrun.android.aaa.data.Category;
 import kg.itrun.android.aaa.data.Favorite;
 import kg.itrun.android.aaa.data.Message;
+import kg.itrun.android.aaa.data.MoreNews;
 import kg.itrun.android.aaa.data.News;
 import kg.itrun.android.aaa.data.Product;
 import kg.itrun.android.aaa.data.Promo;
@@ -147,6 +146,19 @@ public class DataGen {
         }
 
         return news;
+    }
+    public static List<MoreNews> genMoreNews(int count) {
+        List<MoreNews> moreNews = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < count; i++) {
+            MoreNews moreNews1 = new MoreNews(MorenewsTexts[random.nextInt(MorenewsTexts.length)]);
+            moreNews1.setLikes(random.nextInt(10000));
+            moreNews1.setLiked(random.nextBoolean());
+            moreNews1.setLinks("http://google.com");
+            moreNews.add(moreNews1);
+        }
+
+        return moreNews;
     }
 
     public static List<Promo> genPromo(int count) {

@@ -95,6 +95,9 @@ public class MainActivity extends AppActivity implements
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                if (newText.isEmpty()) {
+                    getCurrentFragment().onSearch("");
+                }
                 return false;
             }
         });

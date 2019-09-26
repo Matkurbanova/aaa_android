@@ -68,7 +68,10 @@ public class ProductsFragment extends AppFragment
 
     @Override
     public boolean onSearch(String query) {
-        productsAdapter.filter(query);
+        if (query.isEmpty())
+            productsAdapter.setProductsList(productsViewModel.getProducts().getValue());
+        else
+            productsAdapter.filter(query);
         return true;
     }
 }
