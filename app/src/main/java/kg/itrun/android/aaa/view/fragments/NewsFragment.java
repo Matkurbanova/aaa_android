@@ -7,16 +7,20 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.adapters.NewsAdapter;
 import kg.itrun.android.aaa.data.News;
+import kg.itrun.android.aaa.data.Product;
 
 public class NewsFragment extends AppFragment
         implements NewsAdapter.NewsAdapterListener {
@@ -24,6 +28,13 @@ public class NewsFragment extends AppFragment
 
     private RecyclerView recyclerViewNews;
     private NewsAdapter newsAdapter;
+    private Observer<List<News>> observer = new Observer<List<News>>() {
+        @Override
+        public void onChanged(List<News> news) {
+            newsAdapter.setNewsList(news);
+        }
+    };
+
 
     @Nullable
     @Override
@@ -52,5 +63,10 @@ public class NewsFragment extends AppFragment
         bundle.putInt(AppStatics.ACTION, AppStatics.NEWS_CLICKED);
         bundle.putSerializable(AppStatics.NEWS, news);
         listener.onAction(bundle);
+    }
+    @Override
+    public boolean onSearch(String query) {
+        newsAdapter.filter(query);
+        return true;
     }
 }

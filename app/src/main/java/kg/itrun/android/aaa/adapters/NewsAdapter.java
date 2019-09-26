@@ -20,6 +20,7 @@ import java.util.List;
 
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.data.News;
+import kg.itrun.android.aaa.data.Product;
 
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
@@ -78,6 +79,18 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
 
         holder.btnShare.setOnClickListener(v -> shareNews(news.getLinks()));
     }
+    public void filter(String filter) {
+        List<News> filtered = new ArrayList<>();
+        for (News news : newsList) {
+            if (news.getText().toUpperCase()
+                    .startsWith(filter.toUpperCase()))
+                filtered.add(news);
+        }
+        newsList.clear();
+        newsList.addAll(filtered);
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public int getItemCount() {
