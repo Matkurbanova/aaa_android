@@ -172,7 +172,7 @@ public class DataGen {
             Favorite favorite = new Favorite(newsTexts[random.nextInt(newsTexts.length)]);
             favorite.setPrice(prices[random.nextInt(prices.length)]);
             favorite.setName(productNames[random.nextInt(productNames.length)]);
-
+            favorite.setImage(jpgUrls[random.nextInt(jpgUrls.length)]);
             favorites.add(favorite);
         }
 

@@ -9,16 +9,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.adapters.FavoriteAdapter;
 import kg.itrun.android.aaa.data.Favorite;
+import kg.itrun.android.aaa.data.News;
 import kg.itrun.android.aaa.view.models.BasketViewModel;
 import kg.itrun.android.aaa.view.models.FavoriteViewModel;
 
@@ -29,6 +33,13 @@ public class FavoriteFragment extends AppFragment
     private FavoriteAdapter favoriteAdapter;
     private FavoriteViewModel favoriteViewModel;
     private BasketViewModel basketViewModel;
+    private Observer<List<Favorite>> observer = new Observer<List<Favorite>>() {
+        @Override
+        public void onChanged(List<Favorite> favorites) {
+            favoriteAdapter.setFavoriteList(favorites);
+        }
+    };
+
 
     @Nullable
     @Override

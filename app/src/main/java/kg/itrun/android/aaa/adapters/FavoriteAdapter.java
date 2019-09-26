@@ -11,11 +11,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.data.Favorite;
+import kg.itrun.android.aaa.data.News;
 
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavoriteVH> {
@@ -28,7 +31,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     public FavoriteAdapter(Context context) {
         inflater = LayoutInflater.from(context);
         this.context = context;
-    }
+      }
 
     public void setFavoriteList(List<Favorite> favorite) {
         favoriteList.clear();
@@ -45,11 +48,15 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FavoriteAdapter.FavoriteVH holder, final int position) {
+    public void onBindViewHolder(@NonNull FavoriteVH holder, final int position) {
         final Favorite favorite = favoriteList.get(position);
         holder.textViewSubName.setText(favorite.getName());
         holder.textViewProductName.setText(favorite.getDescription());
         holder.textViewPrice.setText("" + favorite.getPrice());
+        Picasso.with(context)
+                .load(favorite.getImage())
+                .placeholder(R.drawable.news)
+                .into(holder.imageViewFavorite);
 
         holder.imageViewBasket.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +64,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
                 listener.onFavoriteClick(favorite);
             }
         });
+
         holder.imageViewDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

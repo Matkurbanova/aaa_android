@@ -1,4 +1,4 @@
-package kg.itrun.android.aaa.adapters;
+ package kg.itrun.android.aaa.adapters;
 
 
 import android.content.Context;
@@ -137,5 +137,5 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH> {
     public interface NewsAdapterListener {
         void onNewsClick(News news);
     }
-}
+ }
 
