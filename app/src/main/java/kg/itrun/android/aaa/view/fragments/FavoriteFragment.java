@@ -70,4 +70,9 @@ public class FavoriteFragment extends AppFragment
         basketViewModel.addProduct(favorite);
         Toast.makeText(getContext(), getString(R.string.added), Toast.LENGTH_LONG).show();
     }
+    @Override
+    public boolean onSearch(String query) {
+        favoriteAdapter.filter(query);
+        return true;
+    }
 }
