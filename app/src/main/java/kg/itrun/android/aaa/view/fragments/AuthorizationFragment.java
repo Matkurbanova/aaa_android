@@ -1,6 +1,7 @@
 package kg.itrun.android.aaa.view.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.gson.JsonObject;
+import com.santalu.maskedittext.MaskEditText;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -29,11 +31,12 @@ import retrofit2.Response;
 
 public class AuthorizationFragment extends AppFragment implements View.OnClickListener {
 
+    private MaskEditText maskEditTextNumber;
     private Validator validator;
     private View view;
     private ImageView imageViewLogo;
     private TextView remember, registr;
-    private EditText editTextNumber, editTextPassword;
+    private EditText  editTextPassword;
     private Button buttonSignIn;
 
     @Nullable
@@ -50,7 +53,7 @@ public class AuthorizationFragment extends AppFragment implements View.OnClickLi
         remember = v.findViewById(R.id.textViewRemember);
         registr = v.findViewById(R.id.textViewRegistr);
         buttonSignIn = v.findViewById(R.id.buttonOk);
-        editTextNumber = v.findViewById(R.id.editTextEmail);
+        maskEditTextNumber = v.findViewById(R.id.editTextEmail);
         editTextPassword = v.findViewById(R.id.editTextPassword);
 
         registr.setOnClickListener(this);
@@ -62,7 +65,7 @@ public class AuthorizationFragment extends AppFragment implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonOk:
-                String login = editTextNumber.getText().toString();
+                String login = maskEditTextNumber.getText().toString();
                 AppApi.getUser(login, new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {

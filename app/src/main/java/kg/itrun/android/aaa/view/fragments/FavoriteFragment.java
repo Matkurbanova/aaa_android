@@ -58,6 +58,7 @@ public class FavoriteFragment extends AppFragment
         favoriteAdapter = new FavoriteAdapter(getContext());
         favoriteAdapter.setListener(this);
 
+
         recyclerViewFavorite.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewFavorite.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
