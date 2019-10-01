@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,7 @@ import kg.itrun.android.aaa.data.Category;
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.CategoryVH> {
 
     private List<Category> categoriesList = new ArrayList<>();
+    private Context context;
 
     private LayoutInflater inflater;
 
@@ -26,6 +29,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
 
     public CategoriesAdapter(Context context) {
         inflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
     public void setCategoriesList(List<Category> categories) {
@@ -49,13 +53,12 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     public void onBindViewHolder(@NonNull CategoryVH holder, int position) {
         final Category category = categoriesList.get(position);
         holder.textViewName.setText(category.getName());
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onCategoryClick(category);
-                System.out.println(category.getName());
-            }
+        Picasso.with(context)
+                .load(category.getIcon_url())
+                .into(holder.imageViewIcon);
+        holder.itemView.setOnClickListener(view -> {
+            listener.onCategoryClick(category);
+            System.out.println(category.getName());
         });
     }
 

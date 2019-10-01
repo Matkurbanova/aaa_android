@@ -1,34 +1,40 @@
 package kg.itrun.android.aaa.data;
 
-import android.view.View;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.Serializable;
 
-import kg.itrun.android.aaa.R;
-
-public class Category extends AppCompatActivity implements View.OnClickListener, Serializable {
-
-    public Category() {
-
-    }
+public class Category implements Serializable {
 
     public Category(String name) {
         this.name = name;
     }
 
-    private String icon;
-
+    private int id;
+    private int level;
+    private String icon_url;
     private String name;
 
-    public String getIcon() {
-        return icon;
+    public int getId() {
+        return id;
     }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public String getIcon_url() {
+        return icon_url;
+    }
+
+    public void setIcon_url(String icon_url) {
+        this.icon_url = icon_url;
     }
 
     public String getName() {
@@ -37,13 +43,5 @@ public class Category extends AppCompatActivity implements View.OnClickListener,
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public void onClick(View view) {
-
-        switch (view.getId()) {
-
-        }
     }
 }

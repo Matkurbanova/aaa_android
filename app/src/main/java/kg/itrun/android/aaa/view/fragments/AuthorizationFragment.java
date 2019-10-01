@@ -12,14 +12,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.google.gson.JsonObject;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
 import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.R;
-import kg.itrun.android.aaa.ValidationException;
 import kg.itrun.android.aaa.api.AppApi;
 import kg.itrun.android.aaa.data.User;
 import kg.itrun.android.aaa.utils.Validator;
@@ -62,12 +60,14 @@ public class AuthorizationFragment extends AppFragment implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonOk:
-                String login = editTextNumber.getText().toString();
-                AppApi.getUser(login, new Callback<User>() {
+                String phone = editTextNumber.getText().toString();
+                String password = editTextPassword.getText().toString();
+                AppApi.login(phone,password, new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         if (response.isSuccessful()) {
                             System.out.println(response.body().getName());
+                            System.out.println(response.body().getSurname());
                             Picasso.with(getContext())
                                     .load(response.body().getAvatar())
                                     .into(imageViewLogo);
@@ -85,6 +85,14 @@ public class AuthorizationFragment extends AppFragment implements View.OnClickLi
                         t.printStackTrace();
                     }
                 });
+
+
+
+
+
+
+
+
 //                try {
 //                    validator.validate(editTextNumber, AppStatics.Rgxs.PHONE_NUMBER, R.string.put_number);
 //                    validator.validate(editTextPassword, AppStatics.Rgxs.PASSWORD, R.string.wrong_format);
