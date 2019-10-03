@@ -5,6 +5,7 @@ import java.util.List;
 import kg.itrun.android.aaa.api.services.CategoryServices;
 import kg.itrun.android.aaa.api.services.UserService;
 import kg.itrun.android.aaa.data.Category;
+import kg.itrun.android.aaa.data.SubCategory;
 import kg.itrun.android.aaa.data.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,14 +25,22 @@ public class AppApi {
         call.enqueue(callback);
     }
 
-    public static void login(String phone, String password, Callback<User>callback){
+    public static void login(String phone, String password, Callback<User> callback) {
         UserService service = retrofit.create(UserService.class);
-        Call<User> call = service.login(phone,password);
+        Call<User> call = service.login(phone, password);
         call.enqueue(callback);
     }
-    public static void getCategories(int offset, int limit, Callback<List<Category>> callback){
+
+    public static void getCategories(int offset, int limit, Callback<List<Category>> callback) {
         CategoryServices services = retrofit.create(CategoryServices.class);
-        Call<List<Category>> call = services.getCategories(offset,limit);
+        Call<List<Category>> call = services.getCategories(offset, limit);
+        call.enqueue(callback);
+    }
+
+    public static void getSubCategories(int superCategoryId, int offset,
+                                        int limit, Callback<List<SubCategory>> callback) {
+        CategoryServices services = retrofit.create(CategoryServices.class);
+        Call<List<SubCategory>> call = services.getSubCategories(superCategoryId, offset, limit);
         call.enqueue(callback);
     }
 }

@@ -3,6 +3,7 @@ package kg.itrun.android.aaa;
 public class AppStatics {
     public static final String PRODUCT = "product";
     public static final String CATEGORY = "category";
+    public static final String CATEGORY_ID = "category_id";
     public static final String ACTION = "action";
     public static final String NEWS = "news";
 

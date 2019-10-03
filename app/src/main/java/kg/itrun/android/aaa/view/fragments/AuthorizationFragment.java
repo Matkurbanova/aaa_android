@@ -106,10 +106,12 @@ public class AuthorizationFragment extends AppFragment implements View.OnClickLi
 //                }
                 break;
             case R.id.textViewRegistr:
-                Bundle bundle = new Bundle();
-                bundle.putInt(AppStatics.ACTION, AppStatics.REGISTRATION);
-                listener.onAction(bundle);
-                break;
+                System.out.println();
+
+//                Bundle bundle = new Bundle();
+//                bundle.putInt(AppStatics.ACTION, AppStatics.REGISTRATION);
+//                listener.onAction(bundle);
+//                break;
 
 
         }

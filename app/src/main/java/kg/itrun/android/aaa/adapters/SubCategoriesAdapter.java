@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +24,11 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
 
     private LayoutInflater inflater;
     private SubCatListener subCatListener;
+    private Context context;
 
     public SubCategoriesAdapter(Context context) {
         inflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
     public void setSubCategoriesList(List<SubCategory> subcategories) {
@@ -49,12 +53,10 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
     public void onBindViewHolder(@NonNull SubCategoryVH holder, int position) {
         final SubCategory subcategory = subcategoriesList.get(position);
         holder.textViewName.setText(subcategory.getName());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                subCatListener.onSubCategoryClick(subcategory);
-            }
-        });
+        holder.itemView.setOnClickListener(view -> subCatListener.onSubCategoryClick(subcategory));
+        Picasso.with(context)
+                .load(subcategory.getIcon_url())
+                .into(holder.imageViewIcon);
     }
 
     @Override

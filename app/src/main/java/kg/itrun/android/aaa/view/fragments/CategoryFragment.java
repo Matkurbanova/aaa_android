@@ -20,6 +20,7 @@ import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.adapters.CategoriesAdapter;
 import kg.itrun.android.aaa.api.AppApi;
 import kg.itrun.android.aaa.data.Category;
+import kg.itrun.android.aaa.data.SubCategory;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -45,12 +46,10 @@ public class CategoryFragment extends AppFragment
         recyclerViewCategories.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewCategories.setAdapter(categoriesAdapter);
 
-        categoriesAdapter.setCategoriesList(DataGen.genCategories(25));
-
         AppApi.getCategories(0, 10, new Callback<List<Category>>() {
             @Override
             public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     categoriesAdapter.setCategoriesList(response.body());
                 }
             }

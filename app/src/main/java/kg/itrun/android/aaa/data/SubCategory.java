@@ -2,33 +2,19 @@ package kg.itrun.android.aaa.data;
 
 import java.io.Serializable;
 
-public class SubCategory implements Serializable {
-    public SubCategory() {
+public class SubCategory extends Category implements Serializable {
 
-    }
+    private int super_category;
 
     public SubCategory(String name) {
-        this.name = name;
+        super(name);
     }
 
-    private String icon;
-
-    private String name;
-
-    public String getIcon() {
-        return icon;
+    public int getSuperCategory() {
+        return super_category;
     }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
+    public void setSuperCategory(int superCategory) {
+        this.super_category = superCategory;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
 }
