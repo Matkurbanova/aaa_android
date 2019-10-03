@@ -7,6 +7,7 @@ import java.util.Random;
 
 import kg.itrun.android.aaa.data.Category;
 import kg.itrun.android.aaa.data.Favorite;
+import kg.itrun.android.aaa.data.HistoryItem;
 import kg.itrun.android.aaa.data.Message;
 import kg.itrun.android.aaa.data.MoreNews;
 import kg.itrun.android.aaa.data.News;
@@ -218,5 +219,26 @@ public class DataGen {
             messages.add(message);
         }
         return messages;
+    }
+
+    static String dates[] = new String[]
+            {
+                    "22-09-2019",
+                    "03-10-2019",
+                    "05-09-2019",
+            };
+
+    public static List<HistoryItem> genHistory(int count) {
+        List<HistoryItem> historyItems = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < count; i++) {
+            HistoryItem item = new HistoryItem();
+            item.setDate(dates[random.nextInt(dates.length)]);
+            item.setSum(random.nextDouble());
+            item.setProductsCount(random.nextInt(100));
+            historyItems.add(item);
+        }
+
+        return historyItems;
     }
 }

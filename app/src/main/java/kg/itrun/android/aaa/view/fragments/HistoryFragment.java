@@ -11,16 +11,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.time.Year;
 import java.util.Calendar;
-import java.util.Date;
 
-import kg.itrun.android.aaa.MainActivity;
+import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
-import kg.itrun.android.aaa.adapters.PromoAdapter;
+import kg.itrun.android.aaa.adapters.CheckAdapter;
 
 public class HistoryFragment extends AppFragment implements DatePickerDialog.OnDateSetListener {
 
@@ -28,6 +26,8 @@ public class HistoryFragment extends AppFragment implements DatePickerDialog.OnD
     private TextView textViewFrom, textViewTo;
     private Calendar date = Calendar.getInstance();
     private DatePickerDialog datePickerDialog;
+    private RecyclerView recyclerHistory;
+    private CheckAdapter checkAdapter;
     private int i = -1;
 
     @Nullable
@@ -45,7 +45,11 @@ public class HistoryFragment extends AppFragment implements DatePickerDialog.OnD
         textViewFrom.setOnClickListener(view1 -> selectDate(0));
 
         textViewTo.setOnClickListener(view12 -> selectDate(1));
-
+        recyclerHistory = view.findViewById(R.id.recyclerHistory);
+        checkAdapter = new CheckAdapter(getContext());
+        recyclerHistory.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerHistory.setAdapter(checkAdapter);
+        checkAdapter.setHistoryItems(DataGen.genHistory(10));
 
     }
 
@@ -64,7 +68,7 @@ public class HistoryFragment extends AppFragment implements DatePickerDialog.OnD
         month++;
         if (i == 0)
             textViewFrom.setText(day + "-" + month + "-" + year);
-        else if(i==1)
+        else if (i == 1)
             textViewTo.setText(day + "-" + month + "-" + year);
 
     }
@@ -79,5 +83,6 @@ public class HistoryFragment extends AppFragment implements DatePickerDialog.OnD
                 DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_NUMERIC_DATE));
     }
 
+    ;
 
 }

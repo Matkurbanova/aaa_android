@@ -39,6 +39,7 @@ public class CategoryFragment extends AppFragment
         return view;
     }
 
+
     private void initViews(View view) {
         recyclerViewCategories = view.findViewById(R.id.categories_recycler);
         categoriesAdapter = new CategoriesAdapter(getContext());
