@@ -31,7 +31,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     public FavoriteAdapter(Context context) {
         inflater = LayoutInflater.from(context);
         this.context = context;
-      }
+    }
 
     public void setFavoriteList(List<Favorite> favorite) {
         favoriteList.clear();
@@ -54,7 +54,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         holder.textViewProductName.setText(favorite.getDescription());
         holder.textViewPrice.setText("" + favorite.getPrice());
         Picasso.with(context)
-                .load(favorite.getImage())
+                .load(favorite.getImages().get(0))
                 .placeholder(R.drawable.news)
                 .into(holder.imageViewFavorite);
 
@@ -72,17 +72,18 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
             }
         });
     }
-        public void filter (String filter) {
-            List<Favorite> filtered = new ArrayList<>();
-            for (Favorite favorite1 : favoriteList) {
-                if (favorite1.getName().toUpperCase()
-                        .startsWith(filter.toUpperCase()))
-                    filtered.add(favorite1);
-            }
-            favoriteList.clear();
-            favoriteList.addAll(filtered);
-            notifyDataSetChanged();
+
+    public void filter(String filter) {
+        List<Favorite> filtered = new ArrayList<>();
+        for (Favorite favorite1 : favoriteList) {
+            if (favorite1.getName().toUpperCase()
+                    .startsWith(filter.toUpperCase()))
+                filtered.add(favorite1);
         }
+        favoriteList.clear();
+        favoriteList.addAll(filtered);
+        notifyDataSetChanged();
+    }
 
 
     @Override

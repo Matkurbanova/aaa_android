@@ -1,6 +1,7 @@
 package kg.itrun.android.aaa.data;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Product implements Serializable {
 
@@ -12,7 +13,7 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    private String image;
+    private List<String> images;
     private String name;
     private String description;
     private double price;
@@ -27,12 +28,12 @@ public class Product implements Serializable {
     }
 
 
-    public String getImage() {
-        return image;
+    public List<String> getImages() {
+        return images;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 
     public String getName() {
