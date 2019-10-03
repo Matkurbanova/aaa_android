@@ -157,11 +157,13 @@ public class MainActivity extends AppActivity implements
     }
 
     public void onSubCategorySelected(SubCategory subCategory) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(AppStatics.CATEGORY_ID, subCategory.getId());
         toolbar.setTitle(subCategory.getName());
         if (getCurrentFragment() != null)
-            showFragment(ProductsFragment.class, getCurrentFragment().getTag());
+            showFragment(ProductsFragment.class, getCurrentFragment().getTag(), bundle);
         else
-            showFragment(ProductsFragment.class);
+            showFragment(ProductsFragment.class, null, bundle);
     }
 
 

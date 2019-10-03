@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,9 +19,13 @@ import java.util.List;
 import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.adapters.ProductsAdapter;
+import kg.itrun.android.aaa.api.AppApi;
 import kg.itrun.android.aaa.data.Product;
 import kg.itrun.android.aaa.view.models.BasketViewModel;
 import kg.itrun.android.aaa.view.models.ProductsViewModel;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProductsFragment extends AppFragment
         implements ProductsAdapter.ProductAdapterListener {
@@ -59,6 +64,27 @@ public class ProductsFragment extends AppFragment
         productsAdapter.setListener(this);
         recyclerViewProducts.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerViewProducts.setAdapter(productsAdapter);
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            int category_id = bundle.getInt(AppStatics.CATEGORY_ID);
+            AppApi.getProducts(category_id, new Callback<List<Product>>() {
+                @Override
+                public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                    if (response.isSuccessful()) {
+                        productsAdapter.setProductsList(response.body());
+                    } else
+                        Toast.makeText(getContext(), "error", Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onFailure(Call<List<Product>> call, Throwable t) {
+
+                }
+            });
+        }
+
+
     }
 
     @Override
