@@ -1,6 +1,7 @@
 package kg.itrun.android.aaa;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -184,7 +185,7 @@ public class DataGen {
             Favorite favorite = new Favorite(newsTexts[random.nextInt(newsTexts.length)]);
             favorite.setPrice(prices[random.nextInt(prices.length)]);
             favorite.setName(productNames[random.nextInt(productNames.length)]);
-            favorite.setImage(jpgUrls[random.nextInt(jpgUrls.length)]);
+            favorite.setImages(Arrays.asList(jpgUrls));
             favorites.add(favorite);
         }
 

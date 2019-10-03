@@ -58,18 +58,10 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
                 .placeholder(R.drawable.news)
                 .into(holder.imageViewFavorite);
 
-        holder.imageViewBasket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onFavoriteClick(favorite);
-            }
-        });
-        holder.imageViewDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                favoriteList.remove(position);
-                notifyDataSetChanged();
-            }
+        holder.imageViewBasket.setOnClickListener(view -> listener.onFavoriteClick(favorite));
+        holder.imageViewDelete.setOnClickListener(view -> {
+            favoriteList.remove(position);
+            notifyDataSetChanged();
         });
     }
 

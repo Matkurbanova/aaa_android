@@ -48,6 +48,8 @@ public class ProductsFragment extends AppFragment
 
         ViewModelProvider basketProvider = ViewModelProviders.of(this);
         basketViewModel = basketProvider.get(BasketViewModel.class);
+
+
         return view;
     }
 
