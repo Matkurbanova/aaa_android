@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.santalu.maskedittext.MaskEditText;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -30,13 +32,13 @@ public class PersonalFragment extends AppFragment
     private DatePickerDialog datePickerDialog;
     private Validator validator;
     private View view;
-
+    private MaskEditText maskEditTextNumber, maskEditTextDopNumber;
     private ImageView imageViewAvatar, imageViewFoncard,imageViewLogo;
     private TextView name, textViewNameCard, textViewCodeCard;
     private TextView Bonus, Skidki, BonusSum, SkidkiSum;
     private Button buttonEdit, buttonSave1;
     private ConstraintLayout layoutUserData;
-    private EditText editName, editSrName, Namber, DpNamber, Password;
+    private EditText editName, editSrName, Password;
     private EditText editTextEmail;
     private TextView textViewBirthDate, textViewPol;
     private RadioButton radioButton1, radioButton2;
@@ -65,9 +67,9 @@ public class PersonalFragment extends AppFragment
         editName = v.findViewById(R.id.EditeName);
         editSrName = v.findViewById(R.id.editefsname);
         editTextEmail = v.findViewById(R.id.editTextEmail);
-        DpNamber = v.findViewById(R.id.editDopNom);
+        maskEditTextDopNumber = v.findViewById(R.id.editDopNom);
         Password = v.findViewById(R.id.editPassword);
-        Namber = v.findViewById(R.id.editTextNamber);
+        maskEditTextNumber = v.findViewById(R.id.editTextNamber);
         layoutUserData = v.findViewById(R.id.layoutUserData);
         layoutUserData.setVisibility(View.GONE);
         buttonSave1 = v.findViewById(R.id.buttonSave);
@@ -106,7 +108,7 @@ public class PersonalFragment extends AppFragment
             case R.id.buttonSave:
                 try {
                     validator.validate(editName, null, R.string.put_name);
-                    validator.validate(Namber, AppStatics.Rgxs.PHONE_NUMBER, R.string.put_number);
+                    validator.validate(maskEditTextNumber, AppStatics.Rgxs.PHONE_NUMBER, R.string.put_number);
                     validator.validate(Password, AppStatics.Rgxs.PASSWORD, R.string.wrong_format);
 
 

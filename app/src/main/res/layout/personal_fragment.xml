@@ -92,7 +92,7 @@
             android:layout_height="482dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -129,14 +129,14 @@
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/EditeName" />
-
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/editDopNom"
                 android:layout_width="232dp"
                 android:layout_height="44dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:hint="Дополнительный номер"
+                app:met_mask="+996(###) ### ###"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextNamber" />
@@ -163,7 +163,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radioGroup5" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/editTextNamber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -171,6 +171,7 @@
                 android:ems="10"
                 android:hint="Номер телефона"
                 android:inputType="textPersonName"
+                app:met_mask="+996(###) ### ###"
                 app:layout_constraintBottom_toTopOf="@+id/editDopNom"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
