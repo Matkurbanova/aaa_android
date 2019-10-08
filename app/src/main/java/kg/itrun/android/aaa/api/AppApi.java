@@ -3,9 +3,11 @@ package kg.itrun.android.aaa.api;
 import java.util.List;
 
 import kg.itrun.android.aaa.api.services.CategoryServices;
+import kg.itrun.android.aaa.api.services.NewsServices;
 import kg.itrun.android.aaa.api.services.ProductServices;
 import kg.itrun.android.aaa.api.services.UserService;
 import kg.itrun.android.aaa.data.Category;
+import kg.itrun.android.aaa.data.News;
 import kg.itrun.android.aaa.data.Product;
 import kg.itrun.android.aaa.data.SubCategory;
 import kg.itrun.android.aaa.data.User;
@@ -48,6 +50,11 @@ public class AppApi {
     public static void getProducts(int category_id, Callback<List<Product>> callback){
         ProductServices services = retrofit.create(ProductServices.class);
         Call<List<Product>> call = services.getProducts(category_id);
+        call.enqueue(callback);
+    }
+    public static void getNews(Callback<List<News>> callback){
+        NewsServices services = retrofit.create(NewsServices.class);
+        Call<List<News>>call = services.getNews();
         call.enqueue(callback);
     }
 }

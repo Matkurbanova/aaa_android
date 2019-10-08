@@ -19,8 +19,12 @@ import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.DataGen;
 import kg.itrun.android.aaa.R;
 import kg.itrun.android.aaa.adapters.NewsAdapter;
+import kg.itrun.android.aaa.api.AppApi;
 import kg.itrun.android.aaa.data.News;
 import kg.itrun.android.aaa.data.Product;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class NewsFragment extends AppFragment
         implements NewsAdapter.NewsAdapterListener {
@@ -55,8 +59,24 @@ public class NewsFragment extends AppFragment
         recyclerViewNews.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewNews.setAdapter(newsAdapter);
         newsAdapter.setNewsList(DataGen.genNews(35));
+
+        getNews();
+
     }
 
+    private void getNews(){
+        AppApi.getNews(new Callback<List<News>>() {
+            @Override
+            public void onResponse(Call<List<News>> call, Response<List<News>> response) {
+                newsAdapter.setNewsList(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<News>> call, Throwable t) {
+
+            }
+        });
+    }
     @Override
     public void onNewsClick(News news) {
         Bundle bundle = new Bundle();
