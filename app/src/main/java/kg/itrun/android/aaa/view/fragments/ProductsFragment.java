@@ -35,13 +35,6 @@ public class ProductsFragment extends AppFragment
     private ProductsViewModel productsViewModel;
     private BasketViewModel basketViewModel;
 
-    private Observer<List<Product>> observer = new Observer<List<Product>>() {
-        @Override
-        public void onChanged(List<Product> products) {
-            productsAdapter.setProductsList(products);
-        }
-    };
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,7 +42,6 @@ public class ProductsFragment extends AppFragment
         initViews(view);
         ViewModelProvider provider = ViewModelProviders.of(this);
         productsViewModel = provider.get(ProductsViewModel.class);
-        productsViewModel.getProducts().observe(this, observer);
 
         ViewModelProvider basketProvider = ViewModelProviders.of(this);
         basketViewModel = basketProvider.get(BasketViewModel.class);
