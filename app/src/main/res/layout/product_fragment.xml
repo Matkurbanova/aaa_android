@@ -10,19 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <com.synnapps.carouselview.CarouselView
             android:id="@+id/imageViewProduct"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
             android:src="@drawable/product"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.32"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+            app:slideInterval="3000" />
 
         <TextView
             android:id="@+id/textViewTitle"
@@ -31,9 +29,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:textStyle="bold"
-            android:textSize="18sp"
             android:text="@string/product_title"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -197,8 +195,8 @@
             android:id="@+id/clickableTextViewMore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:text="@string/read_more"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/textViewDescription"
             app:layout_constraintEnd_toEndOf="@+id/textViewDescription" />
 

@@ -57,26 +57,29 @@ public class ProductsFragment extends AppFragment
         recyclerViewProducts.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerViewProducts.setAdapter(productsAdapter);
 
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            int category_id = bundle.getInt(AppStatics.CATEGORY_ID);
-            AppApi.getProducts(category_id, new Callback<List<Product>>() {
-                @Override
-                public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                    if (response.isSuccessful()) {
-                        productsAdapter.setProductsList(response.body());
-                    } else
-                        Toast.makeText(getContext(), "error", Toast.LENGTH_LONG).show();
-                }
 
-                @Override
-                public void onFailure(Call<List<Product>> call, Throwable t) {
-
-                }
-            });
+        int category_id = 0;
+        if (getArguments() != null) {
+            category_id = getArguments().getInt(AppStatics.CATEGORY_ID);
         }
+        getProducts(category_id);
+    }
 
+    private void getProducts(int category_id) {
+        AppApi.getProducts(category_id, new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                if (response.isSuccessful()) {
+                    productsAdapter.setProductsList(response.body());
+                } else
+                    Toast.makeText(getContext(), "error", Toast.LENGTH_LONG).show();
+            }
 
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override

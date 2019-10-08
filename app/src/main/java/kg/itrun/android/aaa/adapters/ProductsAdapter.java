@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,9 +27,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     private LayoutInflater inflater;
 
     private ProductAdapterListener listener;
+    private Context context;
 
     public ProductsAdapter(Context context) {
         inflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
     public void setListener(ProductAdapterListener listener) {
@@ -51,12 +55,17 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     public void onBindViewHolder(@NonNull ProductsVH holder, int position) {
         final Product products = productsList.get(position);
         holder.textViewName.setText(products.getName());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (listener != null) {
-                    listener.onProductClick(products);
-                }
+        String firstImageUrl = "";
+        if (products.getImages().size() > 0)
+            firstImageUrl = products.getImages().get(0);
+
+        Picasso.with(context)
+                .load(firstImageUrl)
+                .into(holder.imageViewProduct);
+
+        holder.itemView.setOnClickListener(view -> {
+            if (listener != null) {
+                listener.onProductClick(products);
             }
         });
     }
