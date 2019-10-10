@@ -1,6 +1,7 @@
 package kg.itrun.android.aaa.data;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class News implements Serializable {
     public News() {
@@ -10,7 +11,7 @@ public class News implements Serializable {
         this.text = text;
     }
 
-    private String image;
+    private List<String> image;
     private String text;
     private String icon;
     private String links;
@@ -60,11 +61,11 @@ public class News implements Serializable {
         this.links = links;
     }
 
-    public String getImage() {
+    public List<String> getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(List<String> image) {
         this.image = image;
     }
 

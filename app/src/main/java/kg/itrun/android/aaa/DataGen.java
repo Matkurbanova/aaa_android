@@ -2,6 +2,7 @@ package kg.itrun.android.aaa;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -143,7 +144,7 @@ public class DataGen {
             new1.setLikes(random.nextInt(10000));
             new1.setLiked(random.nextBoolean());
             new1.setLinks("http://google.com");
-            new1.setImage(jpgUrls[random.nextInt(jpgUrls.length)]);
+            new1.setImage(Collections.singletonList(jpgUrls[random.nextInt(jpgUrls.length)]));
             news.add(new1);
         }
 

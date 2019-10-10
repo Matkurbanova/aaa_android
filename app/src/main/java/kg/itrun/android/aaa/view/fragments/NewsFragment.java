@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 
 import java.util.List;
 
@@ -32,6 +35,8 @@ public class NewsFragment extends AppFragment
 
     private RecyclerView recyclerViewNews;
     private NewsAdapter newsAdapter;
+    private CarouselView carouselView;
+    private TextView textView;
     private Observer<List<News>> observer = new Observer<List<News>>() {
         @Override
         public void onChanged(List<News> news) {
@@ -53,13 +58,27 @@ public class NewsFragment extends AppFragment
 
     private void initViews(View view) {
         recyclerViewNews = view.findViewById(R.id.news_recycler);
+        carouselView=view.findViewById(R.id.imageViewNews);
         newsAdapter = new NewsAdapter(getContext());
         newsAdapter.setListener(this);
+        textView=view.findViewById(R.id.textViewText);
 
         recyclerViewNews.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewNews.setAdapter(newsAdapter);
-        newsAdapter.setNewsList(DataGen.genNews(35));
 
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            News news = (News) bundle.getSerializable(AppStatics.NEWS);
+            initNew(news);
+
+        ImageListener imageListener = (position, imageViewNews) -> Picasso.with(getContext())
+                .load(news.getImage().get(position))
+                .into(imageViewNews);
+
+        carouselView.setPageCount(news.getImage().size());
+        carouselView.setImageListener(imageListener);
+
+    }
         getNews();
 
     }
@@ -93,4 +112,6 @@ public class NewsFragment extends AppFragment
             newsAdapter.filter(query);
         return true;
     }
-}
+    private void initNew(News news) {
+        textView.setText(news.getText());
+}}
