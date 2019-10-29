@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
 import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.R;
@@ -30,7 +31,7 @@ public class RegistrationFragment extends AppFragment
 
     private EditText editTextName, editTextUsername, editTextPhone, editTextEmail, editTextPassword, editTextConfirmPassword, editTextHB;
     private TextView textViewHB, textViewGender, textViewText, textViewOr;
-    private ImageView imageViewGoogle;
+    private Button ButtonGoogle;
     private LoginButton buttonFacebookLogin;
     private Button buttonConfirmPhone;
     private RadioButton radioButtonFemale, radioButtonMale;
@@ -46,7 +47,7 @@ public class RegistrationFragment extends AppFragment
     }
 
     private void initViews(View v) {
-        imageViewGoogle = v.findViewById(R.id.imageViewGoogle);
+        ButtonGoogle = v.findViewById(R.id.ButtonGoogle);
         buttonFacebookLogin = v.findViewById(R.id.buttonFacebook);
         editTextName = v.findViewById(R.id.editTextName);
         editTextUsername = v.findViewById(R.id.editTextUsername);
@@ -84,6 +85,11 @@ public class RegistrationFragment extends AppFragment
                     editText.setError(ex.getMessage());
                 }
                 break;
+
         }
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
     }
 }

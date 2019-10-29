@@ -174,25 +174,25 @@
             android:paddingTop="4dp"
             android:text="или"
             android:textAlignment="center"
-            app:layout_constraintBottom_toTopOf="@+id/imageViewGoogle"
+            app:layout_constraintBottom_toTopOf="@+id/ButtonGoogle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonConfirmPhone" />
 
-        <ImageView
-            android:id="@+id/imageViewGoogle"
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/ButtonGoogle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="11dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@+id/buttonFacebook"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewOr"
-            app:srcCompat="@drawable/google_sign" />
+           />
 
 
         <com.facebook.login.widget.LoginButton
@@ -207,7 +207,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewGoogle" />
+            app:layout_constraintTop_toBottomOf="@+id/ButtonGoogle" />
 
         <EditText
             android:id="@+id/editTextHB"
