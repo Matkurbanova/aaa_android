@@ -78,7 +78,11 @@ public class BasketFragment extends AppFragment {
         textViewSum = vi.findViewById(R.id.textViewSumText);
         textViewTotal = vi.findViewById(R.id.textViewTotal);
         buttonBuy = vi.findViewById(R.id.buttonBuy);
-        buttonBuy.setOnClickListener(view -> notifyFragmentListener(AppStatics.PAY_CLICKED));
+        buttonBuy.setOnClickListener(view -> {
+                    // TODO сделать проверку авторизован ли пользователь
+                    notifyFragmentListener(AppStatics.PAY_CLICKED);
+                }
+        );
     }
 
     public void math() {

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1069721434603",
+    "firebase_url": "https://aaa-magazin.firebaseio.com",
+    "project_id": "aaa-magazin",
+    "storage_bucket": "aaa-magazin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069721434603:android:81411c88eb933e15",
+        "android_client_info": {
+          "package_name": "kg.itrun.android.aaa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1069721434603-gm7udq0m2d13u0hvpik2eostn3hoavpl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kg.itrun.android.aaa",
+            "certificate_hash": "6dbe912056944a634e373f4d2476abc3cbec337f"
+          }
+        },
+        {
+          "client_id": "1069721434603-nfetd9ifa8s6f0trl70lqop08rjl8ed6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8VRTlrZh3SD0fo43F_VH-1qAXls2eRt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1069721434603-nfetd9ifa8s6f0trl70lqop08rjl8ed6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

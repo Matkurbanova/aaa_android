@@ -191,8 +191,7 @@
             app:layout_constraintBottom_toTopOf="@+id/buttonFacebook"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewOr"
-           />
+            app:layout_constraintTop_toBottomOf="@+id/textViewOr" />
 
 
         <com.facebook.login.widget.LoginButton
