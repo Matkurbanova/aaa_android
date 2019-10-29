@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 
 import kg.itrun.android.aaa.AppStatics;
 import kg.itrun.android.aaa.R;
@@ -47,7 +48,9 @@ public class RegistrationFragment extends AppFragment
     }
 
     private void initViews(View v) {
-        ButtonGoogle = v.findViewById(R.id.ButtonGoogle);
+        SignInButton signInButton = (SignInButton) v.findViewById(R.id.ButtonGoogle);
+
+//        ButtonGoogle = v.findViewById(R.id.ButtonGoogle);
         buttonFacebookLogin = v.findViewById(R.id.buttonFacebook);
         editTextName = v.findViewById(R.id.editTextName);
         editTextUsername = v.findViewById(R.id.editTextUsername);

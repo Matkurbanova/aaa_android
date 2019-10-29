@@ -31,6 +31,7 @@ import kg.itrun.android.aaa.view.fragments.PersonalFragment;
 import kg.itrun.android.aaa.view.fragments.ProductFragment;
 import kg.itrun.android.aaa.view.fragments.ProductsFragment;
 import kg.itrun.android.aaa.view.fragments.PromoFragment;
+import kg.itrun.android.aaa.view.fragments.RegistrationFragment;
 import kg.itrun.android.aaa.view.fragments.SubCategoryFragment;
 import kg.itrun.android.aaa.view.fragments.SupportFragment;
 
